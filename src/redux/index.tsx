@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import secondBuildingSlice from "./secondBuildingSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    secondBuilding: secondBuildingSlice,
+  },
 });
 
 export default store;

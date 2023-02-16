@@ -12,7 +12,7 @@ type PlaceMentType =
 interface NotificationProp {
   type: NotificationType;
   message: string;
-  description: string;
+  description?: string;
   placement: PlaceMentType;
 }
 

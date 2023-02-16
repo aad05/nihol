@@ -8,7 +8,7 @@ import useNotification from "../../Generic/notification";
 import { useNavigate } from "react-router-dom";
 
 interface UserInput {
-  fullName: string;
+  phoneNumber: string;
   password: string;
 }
 
@@ -19,7 +19,7 @@ const Login: FC = () => {
   const notification = useNotification();
   const [warningAnimation, setWarningAnimation] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<UserInput>({
-    fullName: "",
+    phoneNumber: "+998",
     password: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -35,12 +35,12 @@ const Login: FC = () => {
   };
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    return setUserInput({ ...userInput, [e.target.name]: e.target.value });
   };
 
   const onAuth = async () => {
     if (loading) return;
-    if (!userInput.fullName || !userInput.password) {
+    if (!userInput.phoneNumber || !userInput.password) {
       playWarningAnim();
       notification({
         type: "error",
@@ -50,50 +50,50 @@ const Login: FC = () => {
       });
       return;
     }
-    try {
-      setLoading(true);
-      axios({
-        url: "/user/login",
-        method: "POST",
-        body: userInput,
-      })
-        .catch((err) => {
-          console.log(err);
-
-          playWarningAnim();
-          notification({
-            type: "error",
-            message: "Ошибка",
-            description: "Упс! Что-то пошло не так!",
-            placement: "topRight",
-          });
-          setLoading(false);
-          return;
-        })
-        .then((data) => {
-          const { data: recievedData } = data?.data;
-          const { flowType, fullName } = recievedData?.user;
-          localStorage.setItem("token", recievedData?.token);
-          signIn({
-            token: recievedData?.token,
-            expiresIn: 3600,
-            tokenType: "Bearer",
-            authState: { flowType, fullName },
-          });
-          navigate("/");
-          setLoading(false);
+    setLoading(true);
+    axios({
+      url: "/user/sign-in",
+      method: "POST",
+      body: userInput,
+    }).then((data) => {
+      if (data?.response?.status === 409) {
+        playWarningAnim();
+        notification({
+          type: "error",
+          message: "Ошибка",
+          description: "Упс! Номер телефона или пароль неверный!",
+          placement: "topRight",
         });
-    } catch (error) {
-      // playWarningAnim();
-      // notification({
-      //   type: "error",
-      //   message: "Ошибка",
-      //   description: "Упс! Что-то пошло не так!",
-      //   placement: "topRight",
-      // });
-      // setLoading(false);
-      // return;
-    }
+        setLoading(false);
+        return;
+      } else if (data?.response?.status > 500) {
+        playWarningAnim();
+        notification({
+          type: "error",
+          message: "Ошибка",
+          description: "Упс! Что-то пошло не так!",
+          placement: "topRight",
+        });
+        setLoading(false);
+        return;
+      }
+
+      const { data: recievedData } = data?.data;
+      console.log(recievedData);
+      localStorage.setItem("token", recievedData?.token);
+      localStorage.setItem("userInfo", recievedData?.user);
+
+      signIn({
+        token: recievedData?.token,
+        expiresIn: 3600,
+        tokenType: "Bearer",
+        authState: {
+          User: "user",
+        },
+      });
+      navigate("/");
+      setLoading(false);
+    });
   };
 
   return (
@@ -108,10 +108,10 @@ const Login: FC = () => {
               &#128526; &#128579;
             </Wrapper.Description>
             <Wrapper.Input
-              value={userInput.fullName}
+              value={userInput.phoneNumber}
               onChange={changeHandler}
-              name="fullName"
-              placeholder="Имя"
+              name="phoneNumber"
+              placeholder="Номер телефона"
             />
             <Wrapper.InputPassword
               value={userInput.password}

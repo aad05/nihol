@@ -1,4 +1,4 @@
-import { Title } from "../../Generic/Styles";
+import { FC } from "react";
 import { Wrapper } from "./style";
 import {
   BarChart,
@@ -10,8 +10,9 @@ import {
   Legend,
 } from "recharts";
 import { PieChart, Pie, Cell } from "recharts";
+import { CustomTitle } from "../../Generic/CustomHelpers";
 
-const Report = () => {
+const Report: FC = () => {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   const firstData = [
     {
@@ -35,7 +36,7 @@ const Report = () => {
   ];
   return (
     <Wrapper>
-      <Title>Отчет</Title>
+      <CustomTitle showBackWard={true}>Отчет</CustomTitle>
       <Wrapper.ChartWrapper>
         <Wrapper.Title>Оплаченный суммы</Wrapper.Title>
         <BarChart

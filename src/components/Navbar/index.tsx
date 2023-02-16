@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { Wrapper } from "./style";
-import { useSignOut, useAuthUser } from "react-auth-kit";
+import { useSignOut } from "react-auth-kit";
 import { Outlet } from "react-router-dom";
 import { Avatar, Dropdown, Modal, MenuProps } from "antd";
-// import logo from "../../assets/icons/navbarLogo.png";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const auth = useAuthUser();
   const signOut = useSignOut();
   const [showProfile, setShowProfile] = useState(false);
 
@@ -71,7 +69,7 @@ const Navbar = () => {
                 lg: 64,
               }}
             >
-              {auth()?.fullName[0].toUpperCase()}
+              ?
             </Avatar>
           </Dropdown>
         </Wrapper.ProfileWrapper>

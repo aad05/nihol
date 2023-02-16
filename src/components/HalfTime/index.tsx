@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { Title } from "../../Generic/Styles";
+import { FC } from "react";
 import { Wrapper } from "./style";
 import { Button, Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { CustomTitle } from "../../Generic/CustomHelpers";
 
 const HalfTime: FC = () => {
   interface DataType {
@@ -122,7 +122,7 @@ const HalfTime: FC = () => {
   ];
   return (
     <Wrapper>
-      <Title>Средняя степень</Title>
+      <CustomTitle showBackWard={true}>Средняя степень</CustomTitle>
       <Table columns={columns} dataSource={data} scroll={{ x: 900 }} />
     </Wrapper>
   );

@@ -21,8 +21,8 @@ export const Wrapper: any = styled.div`
     height: 150px;
   }
   @media (max-width: 350px) {
-    width: 110px;
-    height: 130px;
+    width: 120px;
+    height: 140px;
   }
 `;
 Wrapper.Title = styled.div`

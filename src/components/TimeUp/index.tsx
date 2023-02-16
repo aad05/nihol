@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { Title } from "../../Generic/Styles";
+import { FC } from "react";
 import { Wrapper } from "./style";
 import { Button, Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { CustomTitle } from "../../Generic/CustomHelpers";
 
 const TimeUp: FC = () => {
   interface DataType {
@@ -116,7 +116,7 @@ const TimeUp: FC = () => {
   ];
   return (
     <Wrapper>
-      <Title>Время окончания</Title>
+      <CustomTitle showBackWard={true}>Время окончания</CustomTitle>
       <Table columns={columns} dataSource={data} scroll={{ x: 900 }} />
     </Wrapper>
   );
