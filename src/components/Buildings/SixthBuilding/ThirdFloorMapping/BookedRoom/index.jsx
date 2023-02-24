@@ -13,7 +13,7 @@ const BookedRoom = ({ clienteInfo }) => {
       onClick={() => {
         dispatch(switchUserModalVisibility());
         dispatch(
-          setSelectedUserData({ ...clienteInfo, mutationBuildingNumber: "3" })
+          setSelectedUserData({ ...clienteInfo, mutationBuildingNumber: "6-3" })
         );
       }}
     >

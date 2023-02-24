@@ -14,7 +14,7 @@ const Editing = () => {
   );
 
   const [clienteData] = accomodationData[
-    selectedUserData?.roomNumber - 1
+    selectedUserData?.roomOrder
   ].cliente.filter((value) => value?.clienteID === selectedUserData?.clienteID);
 
   return (

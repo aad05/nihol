@@ -25,6 +25,9 @@ const FourthBuilding = lazy(() =>
 const FifthBuilding = lazy(() =>
   import("../components/Buildings/FifthBuilding")
 );
+const SixthBuilding = lazy(() =>
+  import("../components/Buildings/SixthBuilding")
+);
 
 export const paths = [
   {
@@ -91,6 +94,11 @@ export const paths = [
         _id: 4.6,
         path: "map/luxury-rooms/5",
         RenderComp: FifthBuilding,
+      },
+      {
+        _id: 4.6,
+        path: "map/ordinary-rooms/6",
+        RenderComp: SixthBuilding,
       },
     ],
   },

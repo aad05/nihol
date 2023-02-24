@@ -5,24 +5,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDeleteBookedUser } from "../../../../../../hooks/useQuery/useBuildingActions";
 import { bookedUserMenuAPI } from "../../../../../../Generic/MenuAPI";
 import {
+  switchBookedUserActivateModalVisibility,
   switchBookedUserDetailedModalVisibility,
   switchUpdateBookingModalVisibility,
 } from "../../../../../../redux/modalSlice";
 import { setSelectedBookedData } from "../../../../../../redux/userSlice";
 import { IconCircleWrapper } from "../../../../../../Generic/Styles";
+import { useQueryClient } from "react-query";
 
 const BookedUser = ({ idCollection }) => {
+  const queryClient = useQueryClient();
   const { selectedUserData } = useSelector((state) => state.user);
   const { mutate: deleteMutate } = useDeleteBookedUser();
   const dispatch = useDispatch();
   const rtl = new Intl.DateTimeFormat();
   const useQuery = useQueryHandler();
+  const accomodationData = queryClient.getQueryData(
+    `accomodation/${selectedUserData?.mutationBuildingNumber}`
+  );
 
   const { data, isLoading } = useQuery({
     queryLink: `/accomodation/${selectedUserData?.mutationBuildingNumber}/booked-user?_id=${idCollection?._id}`,
     queryKey: `booked-user/${idCollection?._id}`,
     method: "GET",
   });
+  const [clienteData] = accomodationData[
+    selectedUserData?.roomOrder
+  ].cliente.filter((value) => value?.clienteID === selectedUserData?.clienteID);
 
   return (
     <Card
@@ -50,8 +59,19 @@ const BookedUser = ({ idCollection }) => {
                   dispatch(setSelectedBookedData(data));
                 },
                 deleteClickHandler: () => {
-                  console.log("deleting");
                   deleteMutate(data);
+                },
+                activate: {
+                  disabled: Boolean(clienteData.userID),
+                  onClick: () => {
+                    dispatch(setSelectedBookedData(data));
+                    dispatch(
+                      switchBookedUserActivateModalVisibility({
+                        loading: false,
+                        open: true,
+                      })
+                    );
+                  },
                 },
               }),
             }}

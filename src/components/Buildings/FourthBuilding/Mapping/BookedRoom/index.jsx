@@ -7,7 +7,6 @@ import { Tooltip } from "antd";
 
 const BookedRoom = ({ clienteInfo }) => {
   const dispatch = useDispatch();
-  console.log(clienteInfo);
   return (
     <Room
       color={"processing"}

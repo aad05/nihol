@@ -3,10 +3,8 @@ import building from "../../../assets/images/building.svg";
 import { useNavigate } from "react-router-dom";
 import { CustomTitle } from "../../../Generic/CustomHelpers";
 import { CenteredWrapper, SectionCardContainer } from "../../../Generic/Styles";
-import useNotification from "../../../hooks/useNotification";
 
 const OrdinaryRooms = () => {
-  const notification = useNotification();
   const navigate = useNavigate();
   return (
     <CenteredWrapper>
@@ -27,7 +25,8 @@ const OrdinaryRooms = () => {
         <Card
           title="6 корпус"
           image={building}
-          onClick={() => notification({ type: "info", message: "В ремонте" })}
+          // onClick={() => notification({ type: "info", message: "В ремонте" })}
+          onClick={() => navigate("/building-control/map/ordinary-rooms/6")}
         />
       </SectionCardContainer>
     </CenteredWrapper>

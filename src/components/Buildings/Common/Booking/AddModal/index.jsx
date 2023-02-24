@@ -131,8 +131,11 @@ const AddBooking = () => {
               { value: "building-2", label: "Здание 2", selected: true },
               { value: "building-3", label: "Здание 3" },
               { value: "building-4", label: "Здание 4" },
-              { value: "building-5", label: "Здание 5" },
-              { value: "building-6", label: "Здание 6" },
+              { value: "building-5-1", label: "Здание 5 - 1 этаж" },
+              { value: "building-5-2", label: "Здание 5 - 2 этаж" },
+              { value: "building-6-1", label: "Здание 6 - 1 этаж" },
+              { value: "building-6-2", label: "Здание 6 - 2 этаж" },
+              { value: "building-6-3", label: "Здание 6 - 3 этаж" },
             ]}
           />
         </Form.Item>

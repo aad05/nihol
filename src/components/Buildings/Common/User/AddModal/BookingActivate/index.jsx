@@ -1,54 +1,81 @@
 import { Button, DatePicker, Form, Input, Modal, Select } from "antd";
-import { useDispatch, useSelector } from "react-redux";
 import locale from "antd/es/date-picker/locale/ru_RU";
-import useNotification from "../../../../../hooks/useNotification";
-import { useUpdateBookedUser } from "../../../../../hooks/useQuery/useBuildingActions";
-import { switchUpdateBookingModalVisibility } from "../../../../../redux/modalSlice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  useAddUser,
+  useDeleteBookedUser,
+} from "../../../../../../hooks/useQuery/useBuildingActions";
+import { switchBookedUserActivateModalVisibility } from "../../../../../../redux/modalSlice";
 import dayjs from "dayjs";
 
 const { RangePicker } = DatePicker;
 
-const EditBooking = () => {
-  const notificatio = useNotification();
-  const { mutate } = useUpdateBookedUser();
-  const rtl = new Intl.DateTimeFormat();
+const BookingActivate = () => {
+  const { mutateAsync: deleteMutate } = useDeleteBookedUser();
   const dispatch = useDispatch();
-  const { selectedBookedData } = useSelector((state) => state.user);
-  const { bookedUserUpdateModalVisibility } = useSelector(
+  const { mutate } = useAddUser();
+  const rtl = new Intl.DateTimeFormat();
+  const { selectedBookedData, selectedUserData } = useSelector(
+    (state) => state.user
+  );
+  const { bookedUserActivateModalVisibility } = useSelector(
     (state) => state.modal
   );
-  const updateBookedUser = (e) => {
+  console.log(selectedBookedData);
+
+  const addUser = (e) => {
+    dispatch(
+      switchBookedUserActivateModalVisibility({ loading: true, open: true })
+    );
+
     const formattedData = {
-      ...selectedBookedData,
       ...e,
+      hasVoucher: false,
+      birthDate: new Date(e.birthDate.$d).getTime(),
       arrivalDate: new Date(e.arrivalDate[0].$d).getTime(),
       endDate: new Date(e.arrivalDate[1].$d).getTime(),
+      clienteID: selectedBookedData.clienteID,
+      roomNumber: selectedBookedData.roomNumber,
+      roomID: selectedUserData.roomID,
     };
-    mutate(formattedData);
-    notificatio({ type: "success", message: "Сохранено" });
-    dispatch(switchUpdateBookingModalVisibility());
+    (async () => {
+      await deleteMutate(selectedBookedData);
+      mutate(formattedData);
+    })();
   };
+
   return (
     <Modal
-      title="Изменить бронирование"
-      open={bookedUserUpdateModalVisibility}
-      onCancel={() => dispatch(switchUpdateBookingModalVisibility())}
+      mask={true}
+      title="Активировать зарегистрированного пользователя"
+      open={bookedUserActivateModalVisibility.open}
+      onCancel={() =>
+        bookedUserActivateModalVisibility.loading
+          ? false
+          : dispatch(
+              switchBookedUserActivateModalVisibility({
+                loading: false,
+                open: false,
+              })
+            )
+      }
       footer={false}
     >
-      {" "}
       <Form
         layout="vertical"
         initialValues={{
-          fullName: selectedBookedData.fullName,
+          buildingNumber: selectedBookedData.buildingNumber,
+          roomNumber: selectedBookedData.roomNumber,
           address: selectedBookedData.address,
           phoneNumber: selectedBookedData.phoneNumber,
+          fullName: selectedBookedData.fullName,
           arrivalDate: [
             dayjs(rtl.format(Number(selectedBookedData?.arrivalDate))),
             dayjs(rtl.format(Number(selectedBookedData?.endDate))),
           ],
-          prePaid: selectedBookedData.prePaid,
-          buildingNumber: `building-${selectedBookedData?.mutationBuildingNumber}`,
-          roomNumber: selectedBookedData.roomNumber,
+          paidByCash: selectedBookedData.prePaid,
+          paidByPlasticCard: "0",
         }}
         name="basic"
         labelCol={{
@@ -60,7 +87,7 @@ const EditBooking = () => {
         style={{
           width: "100%",
         }}
-        onFinish={(e) => updateBookedUser(e)}
+        onFinish={(e) => addUser(e)}
       >
         <Form.Item
           label="Полное имя"
@@ -69,6 +96,30 @@ const EditBooking = () => {
             {
               required: true,
               message: "Пожалуйста, введите полное имя!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="День рождения"
+          name="birthDate"
+          rules={[
+            {
+              required: true,
+              message: "Пожалуйста, выберите дата рождения!",
+            },
+          ]}
+        >
+          <DatePicker locale={locale} />
+        </Form.Item>
+        <Form.Item
+          label="Номер паспорта"
+          name="passportID"
+          rules={[
+            {
+              required: true,
+              message: "Пожалуйста, введите номер паспорта!",
             },
           ]}
         >
@@ -111,12 +162,36 @@ const EditBooking = () => {
           <RangePicker locale={locale} />
         </Form.Item>
         <Form.Item
-          label="Предоплата"
-          name="prePaid"
+          label="Стоимость за один день"
+          name="dayCost"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите предоплата!",
+              message: "Пожалуйста, введите стоимость дней!",
+            },
+          ]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          label="Оплата наличными"
+          name="paidByCash"
+          rules={[
+            {
+              required: true,
+              message: "Пожалуйста, введите оплата наличными!",
+            },
+          ]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          label="Оплата картой"
+          name="paidByPlasticCard"
+          rules={[
+            {
+              required: true,
+              message: "Пожалуйста, введите оплата картой!",
             },
           ]}
         >
@@ -162,13 +237,24 @@ const EditBooking = () => {
           style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
         >
           <Button
+            onClick={() =>
+              dispatch(
+                switchBookedUserActivateModalVisibility({
+                  loading: false,
+                  open: false,
+                })
+              )
+            }
             style={{ marginRight: "10px" }}
-            onClick={() => dispatch(switchUpdateBookingModalVisibility())}
           >
             Отмена
           </Button>
-          <Button type="primary" htmlType="submit">
-            Изменить
+          <Button
+            loading={bookedUserActivateModalVisibility.loading}
+            type="primary"
+            htmlType="submit"
+          >
+            Добавить
           </Button>
         </Form.Item>
       </Form>
@@ -176,4 +262,4 @@ const EditBooking = () => {
   );
 };
 
-export default EditBooking;
+export default BookingActivate;

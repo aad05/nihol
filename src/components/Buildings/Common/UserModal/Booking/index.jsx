@@ -16,12 +16,10 @@ const Booking = () => {
     `accomodation/${selectedUserData?.mutationBuildingNumber}`
   );
 
-  const [clienteData] = data[selectedUserData?.roomNumber - 1].cliente.filter(
+  const [clienteData] = data[selectedUserData?.roomOrder].cliente.filter(
     (value) => value.clienteID === selectedUserData?.clienteID
   );
-  const [bookedData] = data[
-    selectedUserData?.roomNumber - 1
-  ].bookedCliente.filter(
+  const [bookedData] = data[selectedUserData?.roomOrder].bookedCliente.filter(
     (value) => value.bookedClienteID === selectedUserData?.clienteID
   );
 

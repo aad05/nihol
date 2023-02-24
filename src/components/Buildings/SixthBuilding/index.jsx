@@ -2,32 +2,37 @@ import { CustomTitle } from "../../../Generic/CustomHelpers";
 import useQueryHandler from "../../../hooks/useQuery";
 import FirstFloorMapping from "./FirstFloorMapping";
 import SecondFloorMapping from "./SecondFloorMapping";
+import ThirdFloorMapping from "./ThirdFloorMapping";
 import ModalVisibility from "../Common/ModalVisibility";
 import { Wrapper } from "./style";
 import { Spin } from "antd";
 
-const FifthBuilding = () => {
+const SixthBuilding = () => {
   const useQuery = useQueryHandler();
 
   const { isLoading: firstFloorLoading } = useQuery({
-    queryKey: "accomodation/5-1",
-    queryLink: "/accomodation/5-1/room",
+    queryKey: "accomodation/6-1",
+    queryLink: "/accomodation/6-1/room",
   });
 
   const { isLoading: secondFloorLoading } = useQuery({
-    queryKey: "accomodation/5-2",
-    queryLink: "/accomodation/5-2/room",
+    queryKey: "accomodation/6-2",
+    queryLink: "/accomodation/6-2/room",
+  });
+  const { isLoading: thirdFloorLoading } = useQuery({
+    queryKey: "accomodation/6-3",
+    queryLink: "/accomodation/6-3/room",
   });
   return (
     <Wrapper>
       <ModalVisibility />
       <CustomTitle showBackWard={true}>5 Здание</CustomTitle>
       <Wrapper.MapWrapper>
-        {firstFloorLoading && secondFloorLoading ? (
+        {firstFloorLoading && secondFloorLoading && thirdFloorLoading ? (
           <Spin />
         ) : (
           <>
-            <FirstFloorMapping /> <SecondFloorMapping />
+            <FirstFloorMapping /> <SecondFloorMapping /> <ThirdFloorMapping />
           </>
         )}
       </Wrapper.MapWrapper>
@@ -35,4 +40,4 @@ const FifthBuilding = () => {
   );
 };
 
-export default FifthBuilding;
+export default SixthBuilding;

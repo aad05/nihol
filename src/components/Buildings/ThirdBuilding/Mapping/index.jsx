@@ -30,6 +30,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],
@@ -41,6 +42,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],
@@ -52,6 +54,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],

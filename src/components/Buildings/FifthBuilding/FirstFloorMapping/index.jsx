@@ -10,7 +10,6 @@ import { useQueryClient } from "react-query";
 import RoomComponent from "./Room";
 import EmptyRoom from "./EmptyRoom";
 import BookedRoom from "./BookedRoom";
-import ModalVisibility from "../../Common/ModalVisibility";
 
 const SecondBuildingMapping = () => {
   const queryClient = useQueryClient();
@@ -18,7 +17,6 @@ const SecondBuildingMapping = () => {
 
   return (
     <MappingWrapper>
-      <ModalVisibility />
       <FloorTitle>1 этаж</FloorTitle>
       <MappingContainer>
         {data?.map((roomValue) => (
@@ -32,6 +30,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],
@@ -43,6 +42,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],
@@ -54,6 +54,7 @@ const SecondBuildingMapping = () => {
                     clienteInfo={{
                       ...value,
                       roomNumber: roomValue?.roomNumber,
+                      roomOrder: roomValue?.roomOrder,
                       roomID: roomValue._id,
                       bookedCliente: roomValue?.bookedCliente[index],
                       cliente: roomValue?.cliente[index],

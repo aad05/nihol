@@ -1,4 +1,5 @@
 import {
+  FloorTitle,
   MappingContainer,
   MappingRoomContainer,
   MappingRoomWrapper,
@@ -9,15 +10,14 @@ import { useQueryClient } from "react-query";
 import RoomComponent from "./Room";
 import EmptyRoom from "./EmptyRoom";
 import BookedRoom from "./BookedRoom";
-import ModalVisibility from "../../Common/ModalVisibility";
 
 const SecondBuildingMapping = () => {
   const queryClient = useQueryClient();
-  const data = queryClient.getQueryData("accomodation/2");
+  const data = queryClient.getQueryData("accomodation/6-3");
 
   return (
     <MappingWrapper>
-      <ModalVisibility />
+      <FloorTitle>3 этаж</FloorTitle>
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>

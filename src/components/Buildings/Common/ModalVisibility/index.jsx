@@ -3,6 +3,7 @@ import AddBooking from "../Booking/AddModal";
 import EditBooking from "../Booking/EditModal";
 import InDetail from "../Booking/ObservingInDetail";
 import AddModal from "../User/AddModal";
+import BookingActivate from "../User/AddModal/BookingActivate";
 import UserModal from "../UserModal";
 
 const ModalVisibility = () => {
@@ -12,6 +13,7 @@ const ModalVisibility = () => {
     bookingAddModalVisibility,
     bookedUserUpdateModalVisibility,
     bookedUserDetailedModalVisibility,
+    bookedUserActivateModalVisibility,
   } = useSelector((state) => state.modal);
   return (
     <>
@@ -25,6 +27,8 @@ const ModalVisibility = () => {
       {bookedUserDetailedModalVisibility && <InDetail />}
       {/* Editing booked user */}
       {bookedUserUpdateModalVisibility && <EditBooking />}
+      {/* Activating booked user */}
+      {bookedUserActivateModalVisibility.open && <BookingActivate />}
     </>
   );
 };

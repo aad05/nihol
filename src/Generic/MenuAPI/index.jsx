@@ -5,6 +5,7 @@ import {
   EditOutlined,
   DeleteOutlined,
   FileSearchOutlined,
+  ContactsOutlined,
 } from "@ant-design/icons";
 
 export const navbarMenuAPI = ({ settingClickHandler, logOutClickHandler }) => {
@@ -32,12 +33,24 @@ export const navbarMenuAPI = ({ settingClickHandler, logOutClickHandler }) => {
 };
 
 export const bookedUserMenuAPI = ({
+  activate,
   observingInDetail,
   editClickHandler,
   deleteClickHandler,
 }) => {
   const iconGenericStyle = { fontSize: "18px", marginRight: "10px" };
   return [
+    !activate?.disabled && {
+      label: (
+        <Wrapper.MenuItem onClick={activate?.onClick}>
+          <ContactsOutlined style={iconGenericStyle} />
+          <Wrapper.MenuItemText danger={false}>
+            Активировать
+          </Wrapper.MenuItemText>
+        </Wrapper.MenuItem>
+      ),
+      key: "0",
+    },
     {
       label: (
         <Wrapper.MenuItem onClick={observingInDetail}>
@@ -45,7 +58,7 @@ export const bookedUserMenuAPI = ({
           <Wrapper.MenuItemText danger={false}>Подробно</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
-      key: "0",
+      key: "1",
     },
     {
       label: (
@@ -54,7 +67,7 @@ export const bookedUserMenuAPI = ({
           <Wrapper.MenuItemText danger={false}>Изменить</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
-      key: "1",
+      key: "2",
     },
     {
       label: (
@@ -63,7 +76,7 @@ export const bookedUserMenuAPI = ({
           <Wrapper.MenuItemText danger={true}>Удалить</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
-      key: "2",
+      key: "3",
     },
   ];
 };

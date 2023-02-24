@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   switchAddBookingModalVisibility,
   switchAddUserModalVisibility,
+  switchBookedUserActivateModalVisibility,
+  switchUserModalVisibility,
 } from "../../../redux/modalSlice";
 import { useAxios } from "../../useAxios";
 
@@ -172,6 +174,10 @@ export const useAddUser = () => {
       },
     }).then((res) => {
       dispatch(switchAddUserModalVisibility({ loading: false, open: false }));
+      dispatch(switchUserModalVisibility());
+      dispatch(
+        switchBookedUserActivateModalVisibility({ loading: false, open: false })
+      );
       addUserToCache(res?.data?.data);
     });
   });
