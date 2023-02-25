@@ -4,7 +4,6 @@ import {
   switchAddBookingModalVisibility,
   switchAddUserModalVisibility,
   switchBookedUserActivateModalVisibility,
-  switchUserModalVisibility,
 } from "../../../redux/modalSlice";
 import { useAxios } from "../../useAxios";
 
@@ -174,7 +173,6 @@ export const useAddUser = () => {
       },
     }).then((res) => {
       dispatch(switchAddUserModalVisibility({ loading: false, open: false }));
-      dispatch(switchUserModalVisibility());
       dispatch(
         switchBookedUserActivateModalVisibility({ loading: false, open: false })
       );

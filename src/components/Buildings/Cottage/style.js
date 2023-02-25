@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
   margin-bottom: 50px;
 `;
 Wrapper.MapWrapper = styled.div`
-  width: 950px;
+  width: 650px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   grid-gap: 10px;
-  @media (max-width: 950px) {
+  @media (max-width: 650px) {
     width: 100%;
   }
   @media (max-width: 350px) {

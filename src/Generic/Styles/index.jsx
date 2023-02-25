@@ -24,7 +24,7 @@ export const Title = styled.div`
 export const MappingWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   grid-gap: 20px;
   border-radius: 12px;

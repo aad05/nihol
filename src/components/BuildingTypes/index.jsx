@@ -5,10 +5,8 @@ import Card from "../../Generic/Card";
 import ordinary_room from "../../assets/images/ordinary_room.svg";
 import luxury_room from "../../assets/images/luxury_room.svg";
 import mansion from "../../assets/images/mansion.svg";
-import useNotification from "../../hooks/useNotification";
 
 const EmptyPlace = () => {
-  const notification = useNotification();
   const hasOutlet = useOutlet();
   const navigate = useNavigate();
   return (
@@ -33,10 +31,7 @@ const EmptyPlace = () => {
             <Card
               title="Коттеджи"
               image={mansion}
-              // onClick={() => navigate("/building-control/cottage-rooms")}
-              onClick={() =>
-                notification({ type: "info", message: "В ремонте" })
-              }
+              onClick={() => navigate("/building-control/map/cottage")}
             />
           </SectionCardContainer>
         </>

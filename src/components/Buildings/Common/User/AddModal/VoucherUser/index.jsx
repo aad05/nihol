@@ -188,6 +188,7 @@ const VoucherUser = () => {
             { value: "building-6-1", label: "Здание 6 - 1 этаж" },
             { value: "building-6-2", label: "Здание 6 - 2 этаж" },
             { value: "building-6-3", label: "Здание 6 - 3 этаж" },
+            { value: "building-cottage", label: "Коттедж" },
           ]}
         />
       </Form.Item>
@@ -201,7 +202,7 @@ const VoucherUser = () => {
           },
         ]}
       >
-        <Input disabled type="number" />
+        <Input disabled />
       </Form.Item>
       <Form.Item
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}

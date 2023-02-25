@@ -1,8 +1,8 @@
 import { Modal } from "antd";
-import React from "react";
+import { Wrapper } from "../style";
 import { useDispatch, useSelector } from "react-redux";
 import { switchBookedUserDetailedModalVisibility } from "../../../../../redux/modalSlice";
-import { Wrapper } from "../style";
+import { buildingDetecter } from "../../../../../Generic/InputAPI";
 
 const InDetail = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,9 @@ const InDetail = () => {
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
           <Wrapper.Label>Номер расположенного здание:</Wrapper.Label>
-          <Wrapper.Text>4</Wrapper.Text>
+          <Wrapper.Text>
+            {buildingDetecter(selectedBookedData?.buildingNumber)}
+          </Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>

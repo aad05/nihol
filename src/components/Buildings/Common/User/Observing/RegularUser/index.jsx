@@ -1,7 +1,7 @@
-import React from "react";
 import { useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import { Wrapper } from "../../style";
+import { buildingDetecter } from "../../../../../../Generic/InputAPI";
 import dayjs from "dayjs";
 
 const RegularUser = () => {
@@ -100,7 +100,7 @@ const RegularUser = () => {
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
           <Wrapper.Label>Номер расположенного здание:</Wrapper.Label>
-          <Wrapper.Text>4</Wrapper.Text>
+          <Wrapper.Text>{buildingDetecter(data?.buildingNumber)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>

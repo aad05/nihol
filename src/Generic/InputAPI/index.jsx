@@ -19,3 +19,28 @@ export const phoneNumberFormatter = (value) => {
     5
   )} - ${phoneNumber.slice(5, 7)} - ${phoneNumber.slice(7, 9)}`;
 };
+
+export const buildingDetecter = (buildingNumber) => {
+  switch (buildingNumber) {
+    case "building-2":
+      return "Здание 2";
+    case "building-3":
+      return "Здание 3";
+    case "building-4":
+      return "Здание 4";
+    case "building-5-1":
+      return "Здание 5 - 1 этаж";
+    case "building-5-2":
+      return "Здание 5 - 2 этаж";
+    case "building-6-1":
+      return "Здание 6 - 1 этаж";
+    case "building-6-2":
+      return "Здание 6 - 2 этаж";
+    case "building-6-3":
+      return "Здание 6 - 3 этаж";
+    case "building-cottage":
+      return "Коттедж";
+    default:
+      return "";
+  }
+};
