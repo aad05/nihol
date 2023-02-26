@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export const phoneNumberFormatter = (value) => {
   if (!value) return value;
   const phoneNumber = value.replace(/[^\d]/g, "");
@@ -43,4 +45,32 @@ export const buildingDetecter = (buildingNumber) => {
     default:
       return "";
   }
+};
+
+export const useBuildingNavigator = () => {
+  const navigate = useNavigate();
+  return (buildingNumber) => {
+    switch (buildingNumber) {
+      case "building-2":
+        return navigate("/building-control/map/ordinary-rooms/2");
+      case "building-3":
+        return navigate("/building-control/map/luxury-rooms/3");
+      case "building-4":
+        return navigate("/building-control/map/ordinary-rooms/4");
+      case "building-5-1":
+        return navigate("/building-control/map/luxury-rooms/5");
+      case "building-5-2":
+        return navigate("/building-control/map/luxury-rooms/5");
+      case "building-6-1":
+        return navigate("/building-control/map/ordinary-rooms/6");
+      case "building-6-2":
+        return navigate("/building-control/map/ordinary-rooms/6");
+      case "building-6-3":
+        return navigate("/building-control/map/ordinary-rooms/6");
+      case "building-cottage":
+        return navigate("/building-control/map/cottage");
+      default:
+        return "";
+    }
+  };
 };

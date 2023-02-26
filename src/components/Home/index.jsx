@@ -24,22 +24,22 @@ const Home = () => {
           <Card
             title="Новые поступления"
             image={start_time}
-            // onClick={() => navigate("/new-comers")}
-            onClick={() => notification({ type: "info", message: "В ремонте" })}
+            onClick={() => navigate("/new-comers")}
+            // onClick={() => notification({ type: "info", message: "В ремонте" })}
           />
           <Card
             title="Средняя степень"
             image={half_time}
-            // onClick={() => navigate("/middle-users")}
-            onClick={() => notification({ type: "info", message: "В ремонте" })}
+            onClick={() => navigate("/middle-users")}
+            // onClick={() => notification({ type: "info", message: "В ремонте" })}
           />
         </SectionCardContainer>
         <SectionCardContainer>
           <Card
             title="Дата окончания срока"
             image={time_up}
-            // onClick={() => navigate("/end-users")}
-            onClick={() => notification({ type: "info", message: "В ремонте" })}
+            onClick={() => navigate("/end-users")}
+            // onClick={() => notification({ type: "info", message: "В ремонте" })}
           />
           <Card
             title="Доступные локации"

@@ -71,10 +71,7 @@ const RegularUser = () => {
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
           <Wrapper.Label>Всего к оплате:</Wrapper.Label>
-          <Wrapper.Text>
-            {dayjs(Number(data?.endDate)).diff(Number(data?.arrivalDate), "d") *
-              data?.dayCost}
-          </Wrapper.Text>
+          <Wrapper.Text>{data?.total}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>

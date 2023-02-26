@@ -6,6 +6,7 @@ import {
   switchBookedUserActivateModalVisibility,
 } from "../../../redux/modalSlice";
 import { useAxios } from "../../useAxios";
+import dayjs from "dayjs";
 
 // Custom Cache Handlers
 const useAddUserToCache = () => {
@@ -38,7 +39,14 @@ const useUpdateUserFromCache = () => {
   const queryClient = useQueryClient();
   return (data) => {
     queryClient.setQueryData(`user/${data?._id}`, (oldQueryData) => {
-      return { ...oldQueryData, ...data };
+      return {
+        ...oldQueryData,
+        ...data,
+        total: data.hasVoucher
+          ? "0"
+          : dayjs(Number(data?.endDate)).diff(Number(data?.arrivalDate), "d") *
+            data?.dayCost,
+      };
     });
   };
 };
