@@ -34,7 +34,7 @@ const UserTable = ({ data }) => {
       title: "Оставшиеся дни",
       key: "raminedDays",
       render: (_, record) =>
-        dayjs(Number(record?.endDate)).diff(new Date(), "d"),
+        dayjs(Number(record?.endDate)).diff(new Date().toDateString(), "d"),
     },
     {
       title: "Всего к оплате",
