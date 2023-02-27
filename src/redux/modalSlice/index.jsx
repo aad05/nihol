@@ -19,6 +19,7 @@ const modalSlice = createSlice({
     },
     bookedUserUpdateModalVisibility: false,
     bookedUserDetailedModalVisibility: false,
+    reportOptionModalVisibility: false,
   },
   reducers: {
     switchUserModalVisibility(state) {
@@ -50,6 +51,9 @@ const modalSlice = createSlice({
     switchBookedUserModalVisibility(state) {
       state.bookedUserModalVisibility = !state.bookedUserModalVisibility;
     },
+    switchReportOptionsModalVisibility(state) {
+      state.reportOptionModalVisibility = !state.reportOptionModalVisibility;
+    },
   },
 });
 
@@ -58,6 +62,7 @@ export const {
   switchAddUserModalVisibility,
   switchAddBookingModalVisibility,
   switchBookedUserModalVisibility,
+  switchReportOptionsModalVisibility,
   switchUpdateBookingModalVisibility,
   switchBookedUserDetailedModalVisibility,
   switchBookedUserActivateModalVisibility,

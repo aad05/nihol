@@ -18,9 +18,11 @@ const VoucherUser = () => {
     const formattedData = {
       ...e,
       hasVoucher: true,
-      birthDate: new Date(e.birthDate.$d).getTime(),
-      arrivalDate: new Date(e.arrivalDate[0].$d).getTime(),
-      endDate: new Date(e.arrivalDate[1].$d).getTime(),
+      birthDate: new Date(new Date(e.birthDate.$d).toDateString()).getTime(),
+      arrivalDate: new Date(
+        new Date(e.arrivalDate[0].$d).toDateString()
+      ).getTime(),
+      endDate: new Date(new Date(e.arrivalDate[1].$d).toDateString()).getTime(),
       clienteID: selectedUserData.clienteID,
       roomNumber: selectedUserData.roomNumber,
       roomID: selectedUserData.roomID,

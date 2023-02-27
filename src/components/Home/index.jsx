@@ -11,10 +11,8 @@ import {
   Title,
 } from "../../Generic/Styles";
 import { useNavigate } from "react-router-dom";
-import useNotification from "../../hooks/useNotification";
 
 const Home = () => {
-  const notification = useNotification();
   const navigate = useNavigate();
   return (
     <Wrapper>
@@ -52,8 +50,8 @@ const Home = () => {
           <Card
             title="Отчет"
             image={report}
-            // onClick={() => navigate("/report")}
-            onClick={() => notification({ type: "info", message: "В ремонте" })}
+            onClick={() => navigate("/report")}
+            // onClick={() => notification({ type: "info", message: "В ремонте" })}
           />
         </SectionCardContainer>
       </CenteredWrapper>

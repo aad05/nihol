@@ -43,7 +43,7 @@ const RoomComponent = ({ clienteInfo }) => {
       {isLoading && <LoadingOutlined />}
       {!isLoading &&
         clienteInfo.userID &&
-        dayjs(Number(data?.endDate)).diff(new Date(), "d")}
+        dayjs(Number(data?.endDate)).diff(new Date().toDateString(), "d")}
     </Room>
   );
 };

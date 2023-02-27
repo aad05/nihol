@@ -15,8 +15,10 @@ const AddBooking = () => {
   const addBookingUser = (e) => {
     const formattedData = {
       ...e,
-      arrivalDate: new Date(e.arrivalDate[0].$d).getTime(),
-      endDate: new Date(e.arrivalDate[1].$d).getTime(),
+      arrivalDate: new Date(
+        new Date(e.arrivalDate[0].$d).toDateString()
+      ).getTime(),
+      endDate: new Date(new Date(e.arrivalDate[1].$d).toDateString()).getTime(),
       clienteID: selectedUserData.clienteID,
       roomNumber: selectedUserData.roomNumber,
       roomID: selectedUserData.roomID,

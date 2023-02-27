@@ -58,7 +58,7 @@ const VoucherUser = () => {
         <Wrapper.InputContainer>
           <Wrapper.Label>Оставшиеся дни:</Wrapper.Label>
           <Wrapper.Text>
-            {dayjs(Number(data?.endDate)).diff(new Date(), "d")}
+            {dayjs(Number(data?.endDate)).diff(new Date().toDateString(), "d")}
           </Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
