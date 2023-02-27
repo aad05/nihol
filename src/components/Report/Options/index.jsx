@@ -42,7 +42,7 @@ const ReportOptions = () => {
       >
         <Row>
           {options.map(({ value, label }) => (
-            <Col key={value} span={10}>
+            <Col key={value} span={12}>
               <Checkbox value={value}>{label}</Checkbox>
             </Col>
           ))}

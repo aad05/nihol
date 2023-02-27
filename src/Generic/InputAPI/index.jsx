@@ -77,56 +77,13 @@ export const useBuildingNavigator = () => {
 
 export const reportCheckBoxOptions = [
   {
-    label: "Полное имя",
-    value: "fullName",
+    label: "Информация о суммах",
+    value: "priceInfo",
   },
   {
-    label: "Дата рождения",
-    value: "birthDate",
-  },
-  {
-    label: "Номер паспорта",
-    value: "passportID",
-  },
-  {
-    label: "Номер телефона",
-    value: "phoneNumber",
-  },
-  {
-    label: "Адрес",
-    value: "address",
-  },
-  {
-    label: "Дата прибытия",
-    value: "arrivalDate",
-  },
-  {
-    label: "Дата окончания",
-    value: "endDate",
-  },
-  {
-    label: "Стоимость день",
-    value: "dayCost",
-  },
-  {
-    label: "Номер здание",
-    value: "buildingNumber",
-  },
-  {
-    label: "Номер комната",
-    value: "roomNumber",
+    label: "Информация о даты",
+    value: "dateInfo",
   },
 ];
 
-export const allChecked = [
-  "fullName",
-  "birthDate",
-  "passportID",
-  "phoneNumber",
-  "address",
-  "arrivalDate",
-  "endDate",
-  "dayCost",
-  "buildingNumber",
-  "roomNumber",
-];
+export const allChecked = ["priceInfo", "dateInfo"];

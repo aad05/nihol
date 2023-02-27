@@ -6,20 +6,48 @@ import locale from "antd/es/date-picker/locale/ru_RU";
 import { useDispatch, useSelector } from "react-redux";
 import { switchReportOptionsModalVisibility } from "../../redux/modalSlice";
 import ReportOptions from "./Options";
+import { useState } from "react";
 
 const { RangePicker } = DatePicker;
 
 const Report = () => {
+  const [loading, setLoading] = useState(false);
   const { selectedOptions } = useSelector((state) => state.report);
   const dispatch = useDispatch();
   const addUser = (e) => {
-    console.log({
-      rangeStart: new Date(
+    setLoading(true);
+    let anchor = document.createElement("a");
+    document.body.appendChild(anchor);
+
+    fetch(
+      `${process.env.REACT_APP_BASE_URL}/report?rangeStart=${new Date(
         new Date(e.dateRange[0].$d).toDateString()
-      ).getTime(),
-      rangeEnd: new Date(new Date(e.dateRange[1].$d).toDateString()).getTime(),
-      options: selectedOptions,
-    });
+      ).getTime()}&rangeEnd=${new Date(
+        new Date(e.dateRange[1].$d).toDateString()
+      ).getTime()}&priceInfo=${selectedOptions.includes(
+        "priceInfo"
+      )}&dateInfo=${selectedOptions.includes("dateInfo")}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
+      .then((res) => res.blob())
+      .then((blobby) => {
+        let objectUrl = window.URL.createObjectURL(blobby);
+
+        anchor.href = objectUrl;
+        anchor.download = "отчет.xlsx";
+        anchor.click();
+
+        window.URL.revokeObjectURL(objectUrl);
+        anchor.remove();
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -60,6 +88,7 @@ const Report = () => {
             <Button
               type="primary"
               onClick={() => dispatch(switchReportOptionsModalVisibility())}
+              disabled={loading}
             >
               Выбрать параметры
             </Button>
@@ -67,7 +96,12 @@ const Report = () => {
           <Form.Item
             style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              disabled={loading}
+              loading={loading}
+            >
               Скачать
             </Button>
           </Form.Item>

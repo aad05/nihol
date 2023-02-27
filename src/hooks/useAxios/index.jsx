@@ -9,6 +9,7 @@ export const useAxios = () => {
     headers,
     includeToken = true,
     params,
+    ...others
   }) => {
     return await axios({
       method,
@@ -19,6 +20,7 @@ export const useAxios = () => {
           ...params,
         },
       },
+      ...others,
       headers: {
         Authorization: `${
           includeToken && `Bearer ${localStorage.getItem("token")}`
