@@ -5,6 +5,7 @@ const userSlice = createSlice({
   initialState: {
     selectedUserData: {},
     selectedBookedData: {},
+    movingUserData: {},
   },
   reducers: {
     setSelectedUserData(state, { payload }) {
@@ -13,8 +14,12 @@ const userSlice = createSlice({
     setSelectedBookedData(state, { payload }) {
       state.selectedBookedData = payload;
     },
+    setMovingUserData(state, { payload }) {
+      state.movingUserData = payload;
+    },
   },
 });
 
-export const { setSelectedUserData, setSelectedBookedData } = userSlice.actions;
+export const { setSelectedUserData, setSelectedBookedData, setMovingUserData } =
+  userSlice.actions;
 export default userSlice.reducer;

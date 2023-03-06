@@ -3,7 +3,11 @@ import { Wrapper } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { useQueryClient } from "react-query";
 import { useDelete } from "../../../../../hooks/useQuery/useBuildingActions";
-import { switchUserModalVisibility } from "../../../../../redux/modalSlice";
+import {
+  switchMovingModalVisibility,
+  switchUserModalVisibility,
+} from "../../../../../redux/modalSlice";
+import { setMovingUserData } from "../../../../../redux/userSlice";
 import VoucherUser from "../../../Common/User/Observing/VoucherUser";
 import RegularUser from "../../../Common/User/Observing/RegularUser";
 import EmptyUser from "../EmptyUser";
@@ -19,7 +23,6 @@ const Observing = () => {
   const accomodationData = queryClient.getQueryData(
     `accomodation/${selectedUserData.mutationBuildingNumber}`
   );
-
   const [clienteData] = accomodationData[
     selectedUserData?.roomOrder
   ].cliente.filter((value) => value.clienteID === selectedUserData?.clienteID);
@@ -52,6 +55,25 @@ const Observing = () => {
         >
           <Button onClick={() => dispatch(switchUserModalVisibility())}>
             Отмена
+          </Button>
+          <Button
+            type="primary"
+            onClick={() => {
+              dispatch(
+                switchMovingModalVisibility({ open: true, loading: false })
+              );
+              dispatch(
+                setMovingUserData({
+                  mutationBuildingNumber:
+                    selectedUserData.mutationBuildingNumber,
+                  oldRoomNumber: selectedUserData.roomNumber,
+                  oldClienteID: selectedUserData.clienteID,
+                  _id: selectedUserData.userID,
+                })
+              );
+            }}
+          >
+            Переместить
           </Button>
           <Button danger type="primary" onClick={onDelete}>
             Удалить

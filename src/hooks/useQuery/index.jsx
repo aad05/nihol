@@ -12,6 +12,7 @@ const useQueryHandler = () => {
       () => axios({ url: queryLink, method, body, params }),
       {
         refetchOnWindowFocus: false,
+        cacheTime: 36000000,
       }
     );
   };

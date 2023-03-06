@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import AddBooking from "../Booking/AddModal";
 import EditBooking from "../Booking/EditModal";
 import InDetail from "../Booking/ObservingInDetail";
+import Moving from "../Moving";
 import AddModal from "../User/AddModal";
 import BookingActivate from "../User/AddModal/BookingActivate";
 import UserModal from "../UserModal";
@@ -9,6 +10,7 @@ import UserModal from "../UserModal";
 const ModalVisibility = () => {
   const {
     userModalVisibility,
+    movingModalVisibility,
     userAddModalVisibility,
     bookingAddModalVisibility,
     bookedUserUpdateModalVisibility,
@@ -29,6 +31,8 @@ const ModalVisibility = () => {
       {bookedUserUpdateModalVisibility && <EditBooking />}
       {/* Activating booked user */}
       {bookedUserActivateModalVisibility.open && <BookingActivate />}
+      {/* Moving user to another place */}
+      {movingModalVisibility.open && <Moving />}
     </>
   );
 };

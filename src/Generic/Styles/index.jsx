@@ -33,6 +33,17 @@ export const MappingWrapper = styled.div`
   box-shadow: 6px 6px 7px rgba(0, 0, 0, 0.25);
   margin-top: 40px;
 `;
+export const MoveMappingWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  grid-gap: 20px;
+  border-radius: 12px;
+  padding: 10px;
+  background: #ffffff;
+  margin-top: 40px;
+`;
 export const MappingContainer = styled.div`
   width: 290px;
   display: flex;

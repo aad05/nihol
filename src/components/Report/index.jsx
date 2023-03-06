@@ -9,6 +9,12 @@ import ReportOptions from "./Options";
 import { useState } from "react";
 
 const { RangePicker } = DatePicker;
+const returnNumDate = (date) =>
+  new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
 
 const Report = () => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +44,9 @@ const Report = () => {
         let objectUrl = window.URL.createObjectURL(blobby);
 
         anchor.href = objectUrl;
-        anchor.download = "отчет.xlsx";
+        anchor.download = `(${returnNumDate(
+          e.dateRange[0].$d
+        )}) - (${returnNumDate(e.dateRange[1].$d)}).xlsx`;
         anchor.click();
 
         window.URL.revokeObjectURL(objectUrl);
