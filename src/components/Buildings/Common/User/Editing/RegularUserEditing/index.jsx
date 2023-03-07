@@ -20,6 +20,7 @@ const RegularUserEditing = () => {
   const data = queryClient.getQueryData(`user/${selectedUserData?.userID}`);
 
   const changeUserHandler = (e) => {
+    console.log(rtl.format(Number(data?.arrivalDate)));
     const formattedData = {
       ...data,
       ...e,
@@ -49,8 +50,8 @@ const RegularUserEditing = () => {
           fullName: data?.fullName,
           birthDate: dayjs(rtl.format(Number(data?.birthDate))),
           arrivalDate: [
-            dayjs(rtl.format(Number(data?.arrivalDate))),
-            dayjs(rtl.format(Number(data?.endDate))),
+            dayjs(Number(data?.arrivalDate)),
+            dayjs(Number(data?.endDate)),
           ],
           passportID: data?.passportID,
           phoneNumber: data?.phoneNumber,

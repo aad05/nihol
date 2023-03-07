@@ -15,7 +15,6 @@ const BookingActivate = () => {
   const { mutateAsync: deleteMutate } = useDeleteBookedUser();
   const dispatch = useDispatch();
   const { mutate } = useAddUser();
-  const rtl = new Intl.DateTimeFormat();
   const { selectedBookedData, selectedUserData } = useSelector(
     (state) => state.user
   );
@@ -73,8 +72,8 @@ const BookingActivate = () => {
           phoneNumber: selectedBookedData.phoneNumber,
           fullName: selectedBookedData.fullName,
           arrivalDate: [
-            dayjs(rtl.format(Number(selectedBookedData?.arrivalDate))),
-            dayjs(rtl.format(Number(selectedBookedData?.endDate))),
+            dayjs(Number(selectedBookedData?.arrivalDate)),
+            dayjs(Number(selectedBookedData?.endDate)),
           ],
           paidByCash: selectedBookedData.prePaid,
           paidByPlasticCard: "0",

@@ -49,8 +49,8 @@ const VoucherUserEditing = () => {
           fullName: data?.fullName,
           birthDate: dayjs(rtl.format(Number(data?.birthDate))),
           arrivalDate: [
-            dayjs(rtl.format(Number(data?.arrivalDate))),
-            dayjs(rtl.format(Number(data?.endDate))),
+            dayjs(Number(data?.arrivalDate)),
+            dayjs(Number(data?.endDate)),
           ],
           passportID: data?.passportID,
           phoneNumber: data?.phoneNumber,

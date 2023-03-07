@@ -11,7 +11,6 @@ const { RangePicker } = DatePicker;
 const EditBooking = () => {
   const notificatio = useNotification();
   const { mutate } = useUpdateBookedUser();
-  const rtl = new Intl.DateTimeFormat();
   const dispatch = useDispatch();
   const { selectedBookedData } = useSelector((state) => state.user);
   const { bookedUserUpdateModalVisibility } = useSelector(
@@ -43,8 +42,8 @@ const EditBooking = () => {
           address: selectedBookedData.address,
           phoneNumber: selectedBookedData.phoneNumber,
           arrivalDate: [
-            dayjs(rtl.format(Number(selectedBookedData?.arrivalDate))),
-            dayjs(rtl.format(Number(selectedBookedData?.endDate))),
+            dayjs(Number(selectedBookedData?.arrivalDate)),
+            dayjs(Number(selectedBookedData?.endDate)),
           ],
           prePaid: selectedBookedData.prePaid,
           buildingNumber: `building-${selectedBookedData?.mutationBuildingNumber}`,
