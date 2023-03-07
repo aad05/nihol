@@ -255,14 +255,14 @@ export const useUpdateUser = () => {
   });
 };
 export const useDelete = () => {
-  const { movingUserData } = useSelector((state) => state.user);
+  const { selectedUserData } = useSelector((state) => state.user);
   const axios = useAxios();
   const deleteUserFromCache = useDeleteUserFromCache();
 
   return useMutation((data) => {
     deleteUserFromCache(data);
     return axios({
-      url: `/accomodation/${movingUserData.mutationBuildingNumber}/delete-user`,
+      url: `/accomodation/${selectedUserData.mutationBuildingNumber}/delete-user`,
       method: "DELETE",
       body: {
         ...data,
