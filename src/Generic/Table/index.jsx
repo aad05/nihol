@@ -1,6 +1,7 @@
-import { Button, Table } from "antd";
+import { Button, Input, Table } from "antd";
 import dayjs from "dayjs";
 import { buildingDetecter, useBuildingNavigator } from "../InputAPI";
+import { SearchOutlined } from "@ant-design/icons";
 
 const UserTable = ({ data }) => {
   const buildingNavigator = useBuildingNavigator();
@@ -10,6 +11,26 @@ const UserTable = ({ data }) => {
       title: "Полное имя",
       dataIndex: "fullName",
       key: "fullName",
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
+        return (
+          <Input
+            autoFocus
+            placeholder="Введите для поиска"
+            value={selectedKeys[0]}
+            onChange={(e) => {
+              setSelectedKeys(e.target.value ? [e.target.value] : []);
+              confirm({ closeDropdown: false });
+            }}
+            onPressEnter={() => {
+              confirm();
+            }}
+          />
+        );
+      },
+      filterIcon: () => <SearchOutlined />,
+      onFilter: (value, record) => {
+        return record.fullName.toLowerCase().includes(value.toLowerCase());
+      },
     },
     {
       title: "Номер телефона",
@@ -19,6 +40,27 @@ const UserTable = ({ data }) => {
         >{`+998${record?.phoneNumber}`}</a>
       ),
       key: "phoneNumber",
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
+        return (
+          <Input
+            autoFocus
+            addonBefore="+998"
+            placeholder="Введите для поиска"
+            value={selectedKeys[1]}
+            type="number"
+            onChange={(e) => {
+              setSelectedKeys(e.target.value ? [e.target.value] : []);
+              confirm({ closeDropdown: false });
+            }}
+            onPressEnter={() => confirm()}
+            onBlur={() => confirm()}
+          />
+        );
+      },
+      filterIcon: () => <SearchOutlined />,
+      onFilter: (value, record) => {
+        return record.phoneNumber.toLowerCase().includes(value.toLowerCase());
+      },
     },
     {
       title: "Дата прибытия",

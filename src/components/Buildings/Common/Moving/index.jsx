@@ -26,9 +26,12 @@ const Moving = () => {
           return dispatch(switchMovingModalVisibility());
         else return false;
       }}
-      cancelButtonProps={{ disabled: movingModalVisibility.loading }}
       footer={
-        <Button danger onClick={() => dispatch(switchMovingModalVisibility())}>
+        <Button
+          danger
+          onClick={() => dispatch(switchMovingModalVisibility())}
+          loading={movingModalVisibility.loading}
+        >
           Отмена
         </Button>
       }

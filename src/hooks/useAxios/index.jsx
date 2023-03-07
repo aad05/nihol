@@ -74,7 +74,7 @@ export const useAxiosGetDataOnly = () => {
     })
       .then((response) => response.data.data)
       .catch((error) => {
-        dispatch(() => setErrorStatus(error?.response?.status || 500));
+        dispatch(() => setErrorStatus(error?.request?.status || 500));
         navigate("/error");
         return error;
       });
