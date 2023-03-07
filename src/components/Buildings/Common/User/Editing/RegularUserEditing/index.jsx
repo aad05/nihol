@@ -20,7 +20,6 @@ const RegularUserEditing = () => {
   const data = queryClient.getQueryData(`user/${selectedUserData?.userID}`);
 
   const changeUserHandler = (e) => {
-    console.log(rtl.format(Number(data?.arrivalDate)));
     const formattedData = {
       ...data,
       ...e,

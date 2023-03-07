@@ -18,7 +18,6 @@ const reportSlice = createSlice({
       state.checkAll = payload.length === reportCheckBoxOptions.length;
     },
     setCheckAll(state, { payload }) {
-      console.log(payload);
       if (payload.checked) {
         state.selectedOptions = allChecked;
         state.checkAll = true;

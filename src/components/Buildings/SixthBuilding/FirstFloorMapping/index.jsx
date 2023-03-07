@@ -10,14 +10,17 @@ import { useQueryClient } from "react-query";
 import RoomComponent from "./Room";
 import EmptyRoom from "./EmptyRoom";
 import BookedRoom from "./BookedRoom";
+import { Alert } from "antd";
 
 const SecondBuildingMapping = () => {
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/6-1");
+  console.log(data);
 
   return (
     <MappingWrapper>
       <FloorTitle>1 этаж</FloorTitle>
+      {!data && <Alert message="Сервер не может ответить!" type="error" />}
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>

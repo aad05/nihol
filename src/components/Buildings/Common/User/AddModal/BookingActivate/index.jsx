@@ -21,7 +21,6 @@ const BookingActivate = () => {
   const { bookedUserActivateModalVisibility } = useSelector(
     (state) => state.modal
   );
-  console.log(selectedBookedData);
 
   const addUser = (e) => {
     dispatch(

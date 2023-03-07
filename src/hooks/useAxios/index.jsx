@@ -5,6 +5,7 @@ import { setErrorStatus } from "../../redux/errorSlice";
 const { REACT_APP_BASE_URL } = process.env;
 
 export const useAxios = () => {
+  const navigate = useNavigate();
   const request = async ({
     url,
     method,
@@ -35,7 +36,7 @@ export const useAxios = () => {
     })
       .then((response) => response)
       .catch((error) => {
-        console.log(error);
+        navigate("/error");
         return error;
       });
   };
@@ -73,7 +74,7 @@ export const useAxiosGetDataOnly = () => {
     })
       .then((response) => response.data.data)
       .catch((error) => {
-        dispatch(() => setErrorStatus(error.response.status));
+        dispatch(() => setErrorStatus(error?.response?.status || 500));
         navigate("/error");
         return error;
       });
