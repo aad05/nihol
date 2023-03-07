@@ -1,4 +1,7 @@
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setErrorStatus } from "../../redux/errorSlice";
 const { REACT_APP_BASE_URL } = process.env;
 
 export const useAxios = () => {
@@ -31,12 +34,17 @@ export const useAxios = () => {
       },
     })
       .then((response) => response)
-      .catch((error) => error);
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
   };
   return request;
 };
 
 export const useAxiosGetDataOnly = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const request = async ({
     url,
     method,
@@ -64,7 +72,11 @@ export const useAxiosGetDataOnly = () => {
       },
     })
       .then((response) => response.data.data)
-      .catch((error) => error);
+      .catch((error) => {
+        dispatch(() => setErrorStatus(error.response.status));
+        navigate("/error");
+        return error;
+      });
   };
   return request;
 };

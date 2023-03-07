@@ -3,6 +3,7 @@ import modalSlice from "./modalSlice";
 import navbarSlice from "./navbarSlice";
 import userSlice from "./userSlice";
 import reportSlice from "./reporSlice";
+import errorSlice from "./errorSlice";
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     modal: modalSlice,
     user: userSlice,
     report: reportSlice,
+    error: errorSlice,
   },
 });

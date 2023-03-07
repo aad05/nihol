@@ -20,7 +20,7 @@ const useAddUserToCache = () => {
     queryClient.setQueryData(
       `accomodation/${selectedUserData.mutationBuildingNumber}`,
       (oldQueryData) => {
-        return oldQueryData.map((value) =>
+        return oldQueryData?.map((value) =>
           String(value.roomNumber) === String(roomNumber)
             ? {
                 ...value,
@@ -45,7 +45,7 @@ const useMoveUserFromCache = () => {
     queryClient.setQueryData(
       `accomodation/${mutationBuildingNumber}`,
       (oldQueryData) => {
-        return oldQueryData.map((value) =>
+        return oldQueryData?.map((value) =>
           String(value.roomNumber) === String(roomNumber)
             ? {
                 ...value,
@@ -87,7 +87,7 @@ const useDeleteUserFromCache = () => {
     queryClient.setQueryData(
       `accomodation/${selectedUserData.mutationBuildingNumber}`,
       (oldQueryData) => {
-        return oldQueryData.map((value) =>
+        return oldQueryData?.map((value) =>
           String(value.roomNumber) === String(roomNumber)
             ? {
                 ...value,
@@ -115,7 +115,7 @@ const useAddBookedUsertoCache = () => {
     queryClient.setQueryData(
       `accomodation/${selectedUserData.mutationBuildingNumber}`,
       (oldQueryData) => {
-        return oldQueryData.map((value) =>
+        return oldQueryData?.map((value) =>
           String(value.roomNumber) === String(roomNumber)
             ? {
                 ...value,
@@ -161,7 +161,7 @@ const useDeleteBookedUserFromCache = () => {
     queryClient.setQueryData(
       `accomodation/${selectedUserData.mutationBuildingNumber}`,
       (oldQueryData) => {
-        return oldQueryData.map((value) =>
+        return oldQueryData?.map((value) =>
           String(value.roomNumber) === String(roomNumber)
             ? {
                 ...value,

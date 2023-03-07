@@ -1,34 +1,20 @@
 import { lazy } from "react";
+import NewComers from "../components/NewComers";
+import HalfTime from "../components/HalfTime";
+import TimeUp from "../components/TimeUp";
+import Report from "../components/Report";
+import EmptyPlace from "../components/BuildingTypes";
+import LuxuryRooms from "../components/BuildingTypes/LuxuryRooms";
+import Cottages from "../components/BuildingTypes/Cottages";
+import OrdinaryRooms from "../components/BuildingTypes/OrdinaryRooms";
+import SecondBulding from "../components/Buildings/SecondBuilding";
+import ThirdBulding from "../components/Buildings/ThirdBuilding";
+import FourthBuilding from "../components/Buildings/FourthBuilding";
+import FifthBuilding from "../components/Buildings/FifthBuilding";
+import SixthBuilding from "../components/Buildings/SixthBuilding";
+import Cottage from "../components/Buildings/Cottage";
 
 const Home = lazy(() => import("../components/Home"));
-const NewComers = lazy(() => import("../components/NewComers"));
-const HalfTime = lazy(() => import("../components/HalfTime"));
-const TimeUp = lazy(() => import("../components/TimeUp"));
-const Report = lazy(() => import("../components/Report"));
-const EmptyPlace = lazy(() => import("../components/BuildingTypes"));
-const LuxuryRooms = lazy(() =>
-  import("../components/BuildingTypes/LuxuryRooms")
-);
-const Cottages = lazy(() => import("../components/BuildingTypes/Cottages"));
-const OrdinaryRooms = lazy(() =>
-  import("../components/BuildingTypes/OrdinaryRooms")
-);
-const SecondBulding = lazy(() =>
-  import("../components/Buildings/SecondBuilding")
-);
-const ThirdBulding = lazy(() =>
-  import("../components/Buildings/ThirdBuilding")
-);
-const FourthBuilding = lazy(() =>
-  import("../components/Buildings/FourthBuilding")
-);
-const FifthBuilding = lazy(() =>
-  import("../components/Buildings/FifthBuilding")
-);
-const SixthBuilding = lazy(() =>
-  import("../components/Buildings/SixthBuilding")
-);
-const Cottage = lazy(() => import("../components/Buildings/Cottage"));
 
 export const paths = [
   {

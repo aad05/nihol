@@ -5,6 +5,7 @@ import { useIsAuthenticated } from "react-auth-kit";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import { paths } from "../utils/paths";
+const Error = lazy(() => import("../components/Error"));
 
 const Login = lazy(() => import("../components/Login"));
 const NotFound = lazy(() => import("../components/NotFound"));
@@ -41,6 +42,7 @@ const Root = () => {
           <Route path="/login" element={<Login />} />
         )}
         <Route path="*" element={<NotFound />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </Suspense>
   );

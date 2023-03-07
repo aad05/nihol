@@ -30,7 +30,7 @@ const SecondMoveBuilding = () => {
           <Select
             defaultValue="0"
             onChange={(e) => setSelectedRoomOrder(e)}
-            options={data.map(({ roomOrder, roomNumber }) => ({
+            options={data?.map(({ roomOrder, roomNumber }) => ({
               label: `${roomNumber} комната`,
               value: `${roomOrder}`,
             }))}

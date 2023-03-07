@@ -3,7 +3,7 @@ import { AuthProvider } from "react-auth-kit";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 import store from "../../redux";
 
 const UseWrapper = ({ children }) => {
@@ -17,7 +17,7 @@ const UseWrapper = ({ children }) => {
     >
       <ConfigProvider>
         <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools />
+          {/* <ReactQueryDevtools /> */}
           <Provider store={store}>
             <BrowserRouter>{children}</BrowserRouter>
           </Provider>
