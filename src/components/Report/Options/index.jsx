@@ -18,10 +18,10 @@ const ReportOptions = () => {
       open={reportOptionModalVisibility}
       onCancel={() => dispatch(switchReportOptionsModalVisibility())}
       onOk={() => dispatch(switchReportOptionsModalVisibility())}
-      okText="Сохранять"
-      cancelText="Отмена"
+      okText="Saqlash"
+      cancelText="Bekor qilish"
       //   footer={false}
-      title="Параметры отчета"
+      title="Hisobot opsiyalari"
     >
       <Checkbox
         indeterminate={indeterminate}
@@ -30,7 +30,7 @@ const ReportOptions = () => {
           dispatch(setCheckAll({ checked: e.target.checked }));
         }}
       >
-        Отметить все
+        Barchasini bekor qilish
       </Checkbox>
       <Divider />
       <Checkbox.Group

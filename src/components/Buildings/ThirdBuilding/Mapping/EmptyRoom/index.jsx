@@ -17,9 +17,9 @@ const EmptyRoom = ({ clienteInfo }) => {
       setSelectedUserData({ ...clienteInfo, mutationBuildingNumber: "3" })
     );
     return confirm({
-      title: "Пустое место",
+      title: "O'rin bo'sh",
       content:
-        "Это место пусто. Нажмите «Добавить», чтобы добавить нового пользователя. Или нажмите «Забронировать», чтобы забронировать это место.",
+        "Bu o'rin bo'sh. Yangi foydalanuvchi qo'shish uchun «Qo'shish» tugmasini bosing. Yoki bu joyni band qilish uchun  «Bronlash» tugmasini bosing.",
       closable: true,
       footer: (
         <ConfirmMomdalButtonWrapper>
@@ -31,7 +31,7 @@ const EmptyRoom = ({ clienteInfo }) => {
               );
             }}
           >
-            Забронировать
+            Bronlash
           </Button>
           <Button
             onClick={() => {
@@ -42,7 +42,7 @@ const EmptyRoom = ({ clienteInfo }) => {
             }}
             type="primary"
           >
-            Добавить
+            Qo'shish
           </Button>
         </ConfirmMomdalButtonWrapper>
       ),

@@ -29,10 +29,10 @@ const Observing = () => {
 
   const onDelete = () => {
     return confirm({
-      title: "Убеждаться!",
-      content: "Это действие нельзя отменить после подтверждения удаления.",
-      cancelText: "Отмена",
-      okText: "Удалить",
+      title: "Ishonch hosil qiling!",
+      content: "Oʻchirish tasdiqlangach, bu amalni ortga qaytarib boʻlmaydi.",
+      cancelText: "Bekor qilish",
+      okText: "O'chirish",
       onOk: () => {
         deleteMutate(data);
         dispatch(switchUserModalVisibility());
@@ -54,7 +54,7 @@ const Observing = () => {
           style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
         >
           <Button onClick={() => dispatch(switchUserModalVisibility())}>
-            Отмена
+            Bekor qilish
           </Button>
           <Button
             type="primary"
@@ -73,10 +73,10 @@ const Observing = () => {
               );
             }}
           >
-            Переместить
+            Ko'chrish
           </Button>
           <Button danger type="primary" onClick={onDelete}>
-            Удалить
+            O'chirish
           </Button>
         </Wrapper.InputWrapper>
       )}

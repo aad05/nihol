@@ -23,7 +23,7 @@ const SecondBuildingMapping = () => {
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>
-            <RoomTitle>{roomValue?.roomNumber} комната</RoomTitle>
+            <RoomTitle>{roomValue?.roomNumber} xona</RoomTitle>
             <MappingRoomContainer>
               {roomValue?.cliente?.map((value, index) =>
                 !value.userID && !value.isBooked ? (

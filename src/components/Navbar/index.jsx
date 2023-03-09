@@ -15,10 +15,10 @@ const Navbar = () => {
 
   const confirm = () => {
     Modal.confirm({
-      title: "Предупреждение",
-      content: "Вы действительно хотите выйти ?",
-      okText: "Выйти",
-      cancelText: "Отмена",
+      title: "Tasdiqlang",
+      content: "Haqiqatan ham takr etishni xohlaysizmi?",
+      okText: "Tark etish",
+      cancelText: "Bekor qilish",
       okButtonProps: {
         style: { background: "red" },
       },

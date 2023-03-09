@@ -8,22 +8,22 @@ const OrdinaryRooms = () => {
   const navigate = useNavigate();
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Обычные комнаты</CustomTitle>
+      <CustomTitle showBackWard={true}>Oddiy xonalar</CustomTitle>
       <SectionCardContainer>
         <Card
-          title="2 корпус"
+          title="2 bino"
           image={building}
           onClick={() => navigate("/building-control/map/ordinary-rooms/2")}
         />
         <Card
-          title="4 корпус"
+          title="4 bino"
           image={building}
           onClick={() => navigate("/building-control/map/ordinary-rooms/4")}
         />
       </SectionCardContainer>
       <SectionCardContainer>
         <Card
-          title="6 корпус"
+          title="6 bino"
           image={building}
           // onClick={() => notification({ type: "info", message: "В ремонте" })}
           onClick={() => navigate("/building-control/map/ordinary-rooms/6")}

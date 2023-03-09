@@ -12,7 +12,7 @@ const AddModal = () => {
   return (
     <Modal
       mask={true}
-      title="Добавить нового пользователя"
+      title="Yangi mijoz qo'shish"
       open={userAddModalVisibility.open}
       onCancel={() =>
         userAddModalVisibility.loading
@@ -25,9 +25,9 @@ const AddModal = () => {
     >
       <Segmented
         block
-        options={["Обычный", "Путевка"]}
+        options={["Oddiy", "Voucher"]}
         onChange={(e) =>
-          e === "Обычный" ? setType("regular") : setType("voucher")
+          e === "Oddiy" ? setType("regular") : setType("voucher")
         }
       />
       {type === "regular" ? <RegularUser /> : <VoucherUser />}

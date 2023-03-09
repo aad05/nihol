@@ -16,8 +16,9 @@ const ProfileModal = () => {
     <Modal
       open={profileModalVisibility}
       onCancel={() => dispatch(switchUserModalVisibility())}
-      title="Профиль"
-      okText="Сохранять"
+      title="Profil"
+      okText="Saqlash"
+      cancelText="Bekor qilish"
       okButtonProps={{
         disabled: true,
       }}
@@ -26,11 +27,11 @@ const ProfileModal = () => {
         <Wrapper.Avatar>S</Wrapper.Avatar>
         <Wrapper.Form>
           <Wrapper.InputWrapper>
-            <Wrapper.Label>Имя:</Wrapper.Label>
+            <Wrapper.Label>Ism:</Wrapper.Label>
             <Input disabled={true} value={userData?.name} />
           </Wrapper.InputWrapper>
           <Wrapper.InputWrapper>
-            <Wrapper.Label>Фамилия:</Wrapper.Label>
+            <Wrapper.Label>Familiya:</Wrapper.Label>
             <Input disabled={true} value={userData?.surname} />
           </Wrapper.InputWrapper>
         </Wrapper.Form>

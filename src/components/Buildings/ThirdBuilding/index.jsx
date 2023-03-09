@@ -14,7 +14,7 @@ const ThirdBuilding = () => {
 
   return (
     <Wrapper>
-      <CustomTitle showBackWard={true}>3 Здание</CustomTitle>
+      <CustomTitle showBackWard={true}>3 Bino</CustomTitle>
       <Wrapper.MapWrapper>
         {isLoading ? <Spin /> : <ThirdBuildingMapping />}
       </Wrapper.MapWrapper>

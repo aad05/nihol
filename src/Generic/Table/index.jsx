@@ -8,14 +8,14 @@ const UserTable = ({ data }) => {
   const rtl = new Intl.DateTimeFormat();
   const columns = [
     {
-      title: "Полное имя",
+      title: "To'liq ism",
       dataIndex: "fullName",
       key: "fullName",
       filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
         return (
           <Input
             autoFocus
-            placeholder="Введите для поиска"
+            placeholder="Qidirish..."
             value={selectedKeys[0]}
             onChange={(e) => {
               setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -33,7 +33,7 @@ const UserTable = ({ data }) => {
       },
     },
     {
-      title: "Номер телефона",
+      title: "Tel raqam",
       render: (_, record) => (
         <a
           href={`tel:+998${record?.phoneNumber}`}
@@ -45,7 +45,7 @@ const UserTable = ({ data }) => {
           <Input
             autoFocus
             addonBefore="+998"
-            placeholder="Введите для поиска"
+            placeholder="Qidirish..."
             value={selectedKeys[1]}
             type="number"
             onChange={(e) => {
@@ -63,28 +63,28 @@ const UserTable = ({ data }) => {
       },
     },
     {
-      title: "Дата прибытия",
+      title: "Kelgan sana",
       key: "arrivalDate",
       render: (_, record) => rtl.format(record?.arrivalDate),
     },
     {
-      title: "Дата окончания",
+      title: "Tugash sana",
       key: "endDate",
       render: (_, record) => rtl.format(record?.endDate),
     },
     {
-      title: "Оставшиеся дни",
+      title: "Qolgan kun",
       key: "raminedDays",
       render: (_, record) =>
         dayjs(Number(record?.endDate)).diff(new Date().toDateString(), "d"),
     },
     {
-      title: "Всего к оплате",
+      title: "Jami to'lov",
       key: "total",
       render: (_, record) => (record.hasVoucher ? "С путовкой" : record.total),
     },
     {
-      title: "Оплата наличными",
+      title: "Naqd to'lov",
       key: "paidByCash",
       render: (_, record) =>
         record.hasVoucher
@@ -94,7 +94,7 @@ const UserTable = ({ data }) => {
           : "0",
     },
     {
-      title: "Оплата картой",
+      title: "Karta orqali to'lov",
       key: "paidByPlasticCard",
       render: (_, record) =>
         record.hasVoucher
@@ -104,24 +104,36 @@ const UserTable = ({ data }) => {
           : "0",
     },
     {
-      title: "Здание",
+      title: "To'lov farqi",
+      key: "paymentDifference",
+      render: (_, record) =>
+        record.total - (record?.paidByPlasticCard + record?.paidByCash) > 0
+          ? `-${
+              record.total - (record?.paidByPlasticCard + record?.paidByCash)
+            }`
+          : `+${Math.abs(
+              record.total - (record?.paidByPlasticCard + record?.paidByCash)
+            )}` || 0,
+    },
+    {
+      title: "Bino",
       key: "buildingNumber",
       render: (_, record) => buildingDetecter(record.buildingNumber),
     },
     {
-      title: "Комната",
+      title: "Xona",
       key: "roomNumber",
       dataIndex: "roomNumber",
     },
     {
-      title: "Действия",
+      title: "Xarakat",
       key: "actions",
       render: (_, record) => (
         <Button
           onClick={() => buildingNavigator(record.buildingNumber)}
           type="primary"
         >
-          Перейти
+          O'tish
         </Button>
       ),
     },

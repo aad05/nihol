@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import locale from "antd/es/date-picker/locale/ru_RU";
 import { useAddBookedUser } from "../../../../../hooks/useQuery/useBuildingActions";
 import { switchAddBookingModalVisibility } from "../../../../../redux/modalSlice";
+import dayjs from "dayjs";
 
 const { RangePicker } = DatePicker;
 
@@ -28,7 +29,7 @@ const AddBooking = () => {
 
   return (
     <Modal
-      title="Добавить брон"
+      title="Bron qo'shish"
       open={bookingAddModalVisibility.open}
       onCancel={() => {
         if (!bookingAddModalVisibility.isLoading) {
@@ -58,72 +59,76 @@ const AddBooking = () => {
         onFinish={(e) => addBookingUser(e)}
       >
         <Form.Item
-          label="Полное имя"
+          label="To'liq ism"
           name="fullName"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите полное имя!",
+              message: "Iltimos, to'liq ismni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Адрес"
+          label="Adress"
           name="address"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите адрес!",
+              message: "Iltimos, adressni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Номер телефона"
+          label="Tel raqam"
           name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер телефона!",
+              message: "Iltimos, tel raqamni kiriting!",
             },
           ]}
         >
           <Input addonBefore={"+998"} type="number" />
         </Form.Item>
         <Form.Item
-          label="Диапазон дат"
+          label="Sana oralig'"
           name="arrivalDate"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, выберите диапазон дат!",
+              message: "Iltimos, sana oralig'i kiriting!",
             },
           ]}
         >
-          <RangePicker locale={locale} />
+          <RangePicker
+            defaultValue={dayjs("", "DD.MM.YYYY")}
+            locale={locale}
+            format={"DD.MM.YYYY"}
+          />
         </Form.Item>
         <Form.Item
-          label="Предоплата"
+          label="Oldindan to'lov"
           name="prePaid"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите предоплата!",
+              message: "Iltimos, o'ldindan to'lovni kiriting!",
             },
           ]}
         >
           <Input type="number" />
         </Form.Item>
         <Form.Item
-          label="Номер расположенного здание"
+          label="Joylashgan bino raqami"
           name="buildingNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер расположенного здание!",
+              message: "Iltimos, joylashgan bino raqamini kiriting!",
             },
           ]}
         >
@@ -143,12 +148,12 @@ const AddBooking = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Номер расположенного комната"
+          label="Joylashgan hona raqami"
           name="roomNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер расположенного комната!",
+              message: "Iltimos, joylashgan xona raqamini kiriting!",
             },
           ]}
         >
@@ -166,14 +171,14 @@ const AddBooking = () => {
               )
             }
           >
-            Отмена
+            Bekor qilish
           </Button>
           <Button
             loading={bookingAddModalVisibility.loading}
             type="primary"
             htmlType="submit"
           >
-            Добавить
+            Qo'shish
           </Button>
         </Form.Item>
       </Form>

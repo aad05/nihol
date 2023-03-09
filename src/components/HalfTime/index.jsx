@@ -14,7 +14,7 @@ const HalfTime = () => {
 
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Средняя степень</CustomTitle>
+      <CustomTitle showBackWard={true}>Oraliq muddat</CustomTitle>
       {isLoading ? <Spin /> : <UserTable data={data} />}
     </CenteredWrapper>
   );

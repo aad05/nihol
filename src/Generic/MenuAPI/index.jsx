@@ -15,7 +15,7 @@ export const navbarMenuAPI = ({ settingClickHandler, logOutClickHandler }) => {
       label: (
         <Wrapper.MenuItem onClick={settingClickHandler}>
           <SettingOutlined style={iconGenericStyle} />
-          <Wrapper.MenuItemText danger={false}>Настройки</Wrapper.MenuItemText>
+          <Wrapper.MenuItemText danger={false}>Sozlamalar</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
       key: "0",
@@ -24,7 +24,7 @@ export const navbarMenuAPI = ({ settingClickHandler, logOutClickHandler }) => {
       label: (
         <Wrapper.MenuItem onClick={logOutClickHandler}>
           <LogoutOutlined style={{ ...iconGenericStyle, color: "red" }} />
-          <Wrapper.MenuItemText danger={true}>Выйти</Wrapper.MenuItemText>
+          <Wrapper.MenuItemText danger={true}>Tark etish</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
       key: "1",
@@ -45,7 +45,7 @@ export const bookedUserMenuAPI = ({
         <Wrapper.MenuItem onClick={activate?.onClick}>
           <ContactsOutlined style={iconGenericStyle} />
           <Wrapper.MenuItemText danger={false}>
-            Активировать
+            Faollashtirish
           </Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
@@ -55,7 +55,9 @@ export const bookedUserMenuAPI = ({
       label: (
         <Wrapper.MenuItem onClick={observingInDetail}>
           <FileSearchOutlined style={iconGenericStyle} />
-          <Wrapper.MenuItemText danger={false}>Подробно</Wrapper.MenuItemText>
+          <Wrapper.MenuItemText danger={false}>
+            To'liq ma'lumot
+          </Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
       key: "1",
@@ -64,7 +66,9 @@ export const bookedUserMenuAPI = ({
       label: (
         <Wrapper.MenuItem onClick={editClickHandler}>
           <EditOutlined style={iconGenericStyle} />
-          <Wrapper.MenuItemText danger={false}>Изменить</Wrapper.MenuItemText>
+          <Wrapper.MenuItemText danger={false}>
+            O'zgartirish
+          </Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
       key: "2",
@@ -73,7 +77,7 @@ export const bookedUserMenuAPI = ({
       label: (
         <Wrapper.MenuItem onClick={deleteClickHandler}>
           <DeleteOutlined style={{ ...iconGenericStyle, color: "red" }} />
-          <Wrapper.MenuItemText danger={true}>Удалить</Wrapper.MenuItemText>
+          <Wrapper.MenuItemText danger={true}>O'chirish</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
       key: "3",

@@ -1,5 +1,6 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import locale from "antd/es/date-picker/locale/ru_RU";
+import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useAddUser } from "../../../../../../hooks/useQuery/useBuildingActions";
@@ -51,96 +52,104 @@ const RegularUser = () => {
       onFinish={(e) => addUser(e)}
     >
       <Form.Item
-        label="Полное имя"
+        label="To'liq ism"
         name="fullName"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите полное имя!",
+            message: "Iltimos, to'liq ismni kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="День рождения"
+        label="Tug'ulgan sana"
         name="birthDate"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, выберите дата рождения!",
+            message: "Iltimos, tug'ulgan sanani kiriting!",
           },
         ]}
       >
-        <DatePicker locale={locale} />
+        <DatePicker
+          locale={locale}
+          defaultValue={dayjs("", "DD.MM.YYYY")}
+          format={"DD.MM.YYYY"}
+        />
       </Form.Item>
       <Form.Item
-        label="Номер паспорта"
+        label="Passport raqam"
         name="passportID"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер паспорта!",
+            message: "Iltimos, passport raqamini kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Адрес"
+        label="Adres"
         name="address"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите адрес!",
+            message: "Iltimos, adresni kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Номер телефона"
+        label="Tel raqam"
         name="phoneNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер телефона!",
+            message: "Iltimos, tel raqamni kirting!",
           },
         ]}
       >
         <Input addonBefore={"+998"} type="number" />
       </Form.Item>
       <Form.Item
-        label="Диапазон дат"
+        label="Sana oralig'"
         name="arrivalDate"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, выберите диапазон дат!",
+            message: "Iltimos, sana oralig'ini kiriting!",
           },
         ]}
       >
-        <RangePicker locale={locale} />
+        <RangePicker
+          defaultValue={dayjs("", "DD.MM.YYYY")}
+          locale={locale}
+          format={"DD.MM.YYYY"}
+        />
       </Form.Item>
       <Form.Item
-        label="Стоимость за один день"
+        label="Kunlik narx"
         name="dayCost"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите стоимость дней!",
+            message: "Iltimos, kunlik narxni kiriting!",
           },
         ]}
       >
         <Input type="number" />
       </Form.Item>
       <Form.Item
-        label="Номер расположенного здание"
+        label="Joylashgan bino raqam"
         name="buildingNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер расположенного здание!",
+            message: "Iltimos, joylashgan bino raqamini kiriting!",
           },
         ]}
       >
@@ -160,12 +169,12 @@ const RegularUser = () => {
         />
       </Form.Item>
       <Form.Item
-        label="Номер расположенного комната"
+        label="Joylashgan xona raqam"
         name="roomNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер расположенного комната!",
+            message: "Iltimos, joylashgan xona raqamini kiriting!",
           },
         ]}
       >
@@ -174,13 +183,13 @@ const RegularUser = () => {
       <Form.Item
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
       >
-        <Button style={{ marginRight: "10px" }}>Отмена</Button>
+        <Button style={{ marginRight: "10px" }}>Bekor qilish</Button>
         <Button
           loading={userAddModalVisibility.loading}
           type="primary"
           htmlType="submit"
         >
-          Добавить
+          Qo'shish
         </Button>
       </Form.Item>
     </Form>

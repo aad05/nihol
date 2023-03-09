@@ -5,7 +5,7 @@ export const MovingBuildingLoader = () => {
   return (
     <Wrapper>
       <Spin />
-      <Wrapper.Title>Загрузка...</Wrapper.Title>
+      <Wrapper.Title>Yuklanmoqda...</Wrapper.Title>
     </Wrapper>
   );
 };

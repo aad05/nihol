@@ -14,7 +14,7 @@ const Cottages = () => {
 
   return (
     <Wrapper>
-      <CustomTitle showBackWard={true}>Коттедж</CustomTitle>
+      <CustomTitle showBackWard={true}>Kottej</CustomTitle>
       <Wrapper.MapWrapper>
         {isLoading ? <Spin /> : <CottageBuildingMapping />}
       </Wrapper.MapWrapper>

@@ -8,12 +8,12 @@ const NewComers = () => {
   const useQuery = useQueryHandler();
 
   const { isLoading, data } = useQuery({
-    queryKey: "new-comers",
-    queryLink: "/users/new-comers",
+    queryKey: "all-users",
+    queryLink: "/users/all-users",
   });
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Новое поступление</CustomTitle>
+      <CustomTitle showBackWard={true}>Barcha mijozlar</CustomTitle>
       {isLoading ? <Spin /> : <UserTable data={data} />}
     </CenteredWrapper>
   );

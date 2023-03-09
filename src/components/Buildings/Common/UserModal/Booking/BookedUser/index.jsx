@@ -83,10 +83,10 @@ const BookedUser = ({ idCollection }) => {
         }
         layout="vertical"
       >
-        <Descriptions.Item label="Дата начала">
+        <Descriptions.Item label="Boshlanish sana">
           {rtl?.format(data?.arrivalDate)}
         </Descriptions.Item>
-        <Descriptions.Item label="Дата окончания">
+        <Descriptions.Item label="Tugash sana">
           {rtl?.format(data?.endDate)}
         </Descriptions.Item>
       </Descriptions>

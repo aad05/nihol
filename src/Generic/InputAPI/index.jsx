@@ -25,21 +25,21 @@ export const phoneNumberFormatter = (value) => {
 export const buildingDetecter = (buildingNumber) => {
   switch (buildingNumber) {
     case "building-2":
-      return "Здание 2";
+      return "Bino 2";
     case "building-3":
-      return "Здание 3";
+      return "Bino 3";
     case "building-4":
-      return "Здание 4";
+      return "Bino 4";
     case "building-5-1":
-      return "Здание 5 - 1 этаж";
+      return "Bino 5 - 1 qavat";
     case "building-5-2":
-      return "Здание 5 - 2 этаж";
+      return "Bino 5 - 2 qavat";
     case "building-6-1":
-      return "Здание 6 - 1 этаж";
+      return "Bino 6 - 1 qavat";
     case "building-6-2":
-      return "Здание 6 - 2 этаж";
+      return "Bino 6 - 2 qavat";
     case "building-6-3":
-      return "Здание 6 - 3 этаж";
+      return "Bino 6 - 3 qavat";
     case "building-cottage":
       return "Коттедж";
     default:
@@ -77,11 +77,11 @@ export const useBuildingNavigator = () => {
 
 export const reportCheckBoxOptions = [
   {
-    label: "Информация о суммах",
+    label: "Miqdori haqida ma'lumot",
     value: "priceInfo",
   },
   {
-    label: "Информация о даты",
+    label: "Sana haqida ma'lumot",
     value: "dateInfo",
   },
 ];

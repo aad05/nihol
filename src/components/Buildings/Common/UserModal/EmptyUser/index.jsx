@@ -7,7 +7,7 @@ const EmptyUser = () => {
   return (
     <Result
       status="404"
-      subTitle="Комната пуста. Вы можете добавить нового пользователя, нажав «Добавить»"
+      subTitle="Xona bo'sh. «Qo'shish» tugmasini bosish orqali yangi foydalanuvchi qo'shishingiz mumkin."
       extra={
         <Button
           type="primary"
@@ -17,7 +17,7 @@ const EmptyUser = () => {
             )
           }
         >
-          Добавить
+          Qo'shish
         </Button>
       }
     />

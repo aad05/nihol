@@ -18,9 +18,9 @@ const Moving = () => {
 
   return (
     <Modal
-      title="Переезжать пользователь"
+      title="Ko'chirish"
       open={movingModalVisibility.open}
-      cancelText="Отмена"
+      cancelText="Bekor qilish"
       onCancel={() => {
         if (!movingModalVisibility.loading)
           return dispatch(switchMovingModalVisibility());
@@ -32,7 +32,7 @@ const Moving = () => {
           onClick={() => dispatch(switchMovingModalVisibility())}
           loading={movingModalVisibility.loading}
         >
-          Отмена
+          Bekor qilish
         </Button>
       }
     >

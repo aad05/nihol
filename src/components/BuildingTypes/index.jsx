@@ -14,22 +14,22 @@ const EmptyPlace = () => {
       {!!hasOutlet && <Outlet />}
       {!hasOutlet && (
         <>
-          <CustomTitle showBackWard={true}>Пустые места</CustomTitle>
+          <CustomTitle showBackWard={true}>Bino turlari</CustomTitle>
           <SectionCardContainer>
             <Card
-              title="Обычные комнаты"
+              title="Oddiy xonalar"
               image={ordinary_room}
               onClick={() => navigate("/building-control/ordinary-rooms")}
             />
             <Card
-              title="Роскошные комнаты"
+              title="Hashamatli xonalar"
               image={luxury_room}
               onClick={() => navigate("/building-control/luxury-rooms")}
             />
           </SectionCardContainer>
           <SectionCardContainer>
             <Card
-              title="Коттеджи"
+              title="Kottejlar"
               image={mansion}
               onClick={() => navigate("/building-control/map/cottage")}
             />

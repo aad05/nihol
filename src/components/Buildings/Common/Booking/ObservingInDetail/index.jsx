@@ -15,31 +15,31 @@ const InDetail = () => {
   return (
     <Modal
       open={bookedUserDetailedModalVisibility}
-      title="Детальная информация"
+      title="To'liq ma'lumot"
       onCancel={() => dispatch(switchBookedUserDetailedModalVisibility())}
       footer={false}
     >
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Полное имя:</Wrapper.Label>
+          <Wrapper.Label>To'liq ism:</Wrapper.Label>
           <Wrapper.Text>{selectedBookedData?.fullName}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер телефона:</Wrapper.Label>
+          <Wrapper.Label>Tel raqam:</Wrapper.Label>
           <Wrapper.Text>+998{selectedBookedData?.phoneNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Адрес:</Wrapper.Label>
+          <Wrapper.Label>Adres:</Wrapper.Label>
           <Wrapper.Text>{selectedBookedData?.address}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Дата прибытия:</Wrapper.Label>
+          <Wrapper.Label>Tashrif sanasi</Wrapper.Label>
           <Wrapper.Text>
             {rtl.format(selectedBookedData?.arrivalDate)}
           </Wrapper.Text>
@@ -47,19 +47,19 @@ const InDetail = () => {
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Дата окончания:</Wrapper.Label>
+          <Wrapper.Label>Tugash sansi:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(selectedBookedData?.endDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Предоплата:</Wrapper.Label>
+          <Wrapper.Label>Oldindan to'lov:</Wrapper.Label>
           <Wrapper.Text>{selectedBookedData?.prePaid}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер расположенного здание:</Wrapper.Label>
+          <Wrapper.Label>Joylashgan bino raqami:</Wrapper.Label>
           <Wrapper.Text>
             {buildingDetecter(selectedBookedData?.buildingNumber)}
           </Wrapper.Text>
@@ -67,7 +67,7 @@ const InDetail = () => {
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер расположенного комната:</Wrapper.Label>
+          <Wrapper.Label>Joylashgan bino raqami:</Wrapper.Label>
           <Wrapper.Text>{selectedBookedData?.roomNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>

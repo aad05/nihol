@@ -14,7 +14,7 @@ const TimeUp = () => {
 
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Время окончания</CustomTitle>
+      <CustomTitle showBackWard={true}>Muddat tugash</CustomTitle>
       {isLoading ? <Spin /> : <UserTable data={data} />}
     </CenteredWrapper>
   );

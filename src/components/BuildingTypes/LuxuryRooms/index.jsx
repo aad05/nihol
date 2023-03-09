@@ -8,15 +8,15 @@ const LuxuryRooms = () => {
   const navigate = useNavigate();
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Роскошные комнаты</CustomTitle>
+      <CustomTitle showBackWard={true}>Hashamatli xonalar</CustomTitle>
       <SectionCardContainer>
         <Card
-          title="3 корпус"
+          title="3 bino"
           image={building}
           onClick={() => navigate("/building-control/map/luxury-rooms/3")}
         />
         <Card
-          title="5 корпус"
+          title="5 bino"
           image={building}
           onClick={() => navigate("/building-control/map/luxury-rooms/5")}
         />

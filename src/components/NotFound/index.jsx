@@ -16,10 +16,10 @@ const NotFound = () => {
       <Result
         status="404"
         title="404"
-        subTitle="Извините, страница, которую вы посетили, не существует."
+        subTitle="Kechirasz, siz tashrif buyurgan sayt mavjud emas."
         extra={
           <Button onClick={() => navigate("/")} type="primary">
-            Домой
+            Asosiy bo'lim
           </Button>
         }
       />

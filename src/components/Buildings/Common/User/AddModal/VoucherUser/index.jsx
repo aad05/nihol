@@ -1,5 +1,6 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import locale from "antd/es/date-picker/locale/ru_RU";
+import dayjs from "dayjs";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddUser } from "../../../../../../hooks/useQuery/useBuildingActions";
@@ -50,132 +51,140 @@ const VoucherUser = () => {
       onFinish={(e) => addUser(e)}
     >
       <Form.Item
-        label="Полное имя"
+        label="To'liq ism"
         name="fullName"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите полное имя!",
+            message: "Iltimos, to'liq ismni kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="День рождения"
+        label="Tug'ulgan sana"
         name="birthDate"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, выберите дата рождения!",
+            message: "Iltimos, tug'ulgan sanani kiriting!",
           },
         ]}
       >
-        <DatePicker locale={locale} />
+        <DatePicker
+          locale={locale}
+          defaultValue={dayjs("", "DD.MM.YYYY")}
+          format={"DD.MM.YYYY"}
+        />
       </Form.Item>
       <Form.Item
-        label="Номер паспорта"
+        label="Passport raqam"
         name="passportID"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер паспорта!",
+            message: "Iltimos, passport raqamini kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Адрес"
+        label="Adres"
         name="address"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите адрес!",
+            message: "Iltimos, adresni kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Номер телефона"
+        label="Tel raqam"
         name="phoneNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер телефона!",
+            message: "Iltimos, tel raqamni kirting!",
           },
         ]}
       >
         <Input addonBefore={"+998"} type="number" />
       </Form.Item>
       <Form.Item
-        label="Диапазон дат"
+        label="Sana oralig'"
         name="arrivalDate"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, выберите диапазон дат!",
+            message: "Iltimos, sana oralig'ini kiriting!",
           },
         ]}
       >
-        <RangePicker locale={locale} />
+        <RangePicker
+          defaultValue={dayjs("", "DD.MM.YYYY")}
+          locale={locale}
+          format={"DD.MM.YYYY"}
+        />
       </Form.Item>
       <Form.Item
-        label="Стоимость путевка"
+        label="Voucher narx"
         name="voucherCost"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите стоимость путевка!",
+            message: "Iltimos, voucher narxini kiriting!",
           },
         ]}
       >
         <Input type="number" />
       </Form.Item>
       <Form.Item
-        label="Номер путевка"
+        label="Voucher raqam"
         name="voucherNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер путевка!",
+            message: "Iltimos, voucher raqamini kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Место работы и должность"
+        label="Ish joyi va lavozim"
         name="workPlace"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите место работы и должность!",
+            message: "Iltimos, ish joyi va lavozimini kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Организация, выдавшая путевку"
+        label="Voucher bergan tashkilot"
         name="voucherOrganization"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите организация, выдавшая путевку!",
+            message: "Iltimos, voucher bergan tashkilotni kiriting!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Номер расположенного здание"
+        label="Joylashgan bino raqam"
         name="buildingNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер расположенного здание!",
+            message: "Iltimos, joylashgan bino raqamini kiriting!",
           },
         ]}
       >
@@ -195,12 +204,12 @@ const VoucherUser = () => {
         />
       </Form.Item>
       <Form.Item
-        label="Номер расположенного комната"
+        label="Joylashgan xona raqam"
         name="roomNumber"
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите номер расположенного комната!",
+            message: "Iltimos, joylashgan xona raqamini kiriting!",
           },
         ]}
       >
@@ -209,13 +218,13 @@ const VoucherUser = () => {
       <Form.Item
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
       >
-        <Button style={{ marginRight: "10px" }}>Отмена</Button>
+        <Button style={{ marginRight: "10px" }}>Bekor qilish</Button>
         <Button
           loading={userAddModalVisibility.loading}
           type="primary"
           htmlType="submit"
         >
-          Добавить
+          Qo'shish
         </Button>
       </Form.Item>
     </Form>

@@ -4,7 +4,7 @@ import { CustomTitle } from "../../../Generic/CustomHelpers";
 const Cottages = () => {
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Коттеджи</CustomTitle>
+      <CustomTitle showBackWard={true}>Kottejlar</CustomTitle>
     </CenteredWrapper>
   );
 };

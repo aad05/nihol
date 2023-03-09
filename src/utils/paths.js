@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import NewComers from "../components/NewComers";
+import AllUsers from "../components/AllUsers";
 import HalfTime from "../components/HalfTime";
 import TimeUp from "../components/TimeUp";
 import Report from "../components/Report";
@@ -25,8 +25,8 @@ export const paths = [
   },
   {
     _id: 1,
-    path: "/new-comers",
-    RenderComp: NewComers,
+    path: "/all-users",
+    RenderComp: AllUsers,
     hasChild: false,
   },
   {

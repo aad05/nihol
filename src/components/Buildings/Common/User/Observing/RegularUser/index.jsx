@@ -14,49 +14,49 @@ const RegularUser = () => {
     <Wrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Полное имя:</Wrapper.Label>
+          <Wrapper.Label>To'liq ism:</Wrapper.Label>
           <Wrapper.Text>{data?.fullName}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>День рождения:</Wrapper.Label>
+          <Wrapper.Label>Tug'ulgan sana:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.birthDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер паспорта:</Wrapper.Label>
+          <Wrapper.Label>Passport raqam:</Wrapper.Label>
           <Wrapper.Text>{data?.passportID}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер телефона:</Wrapper.Label>
+          <Wrapper.Label>Tel raqam:</Wrapper.Label>
           <Wrapper.Text>{data?.phoneNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Адрес:</Wrapper.Label>
+          <Wrapper.Label>Adres:</Wrapper.Label>
           <Wrapper.Text>{data?.address}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Дата прибытия:</Wrapper.Label>
+          <Wrapper.Label>Kelgan sana:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.arrivalDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Дата окончания:</Wrapper.Label>
+          <Wrapper.Label>Tugash sana:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.endDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Оставшиеся дни:</Wrapper.Label>
+          <Wrapper.Label>Qolgan kun:</Wrapper.Label>
           <Wrapper.Text>
             {dayjs(Number(data?.endDate)).diff(new Date().toDateString(), "d")}
           </Wrapper.Text>
@@ -64,45 +64,57 @@ const RegularUser = () => {
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Стоимость за один день:</Wrapper.Label>
+          <Wrapper.Label>Kunlik narx:</Wrapper.Label>
           <Wrapper.Text>{data?.dayCost}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Всего к оплате:</Wrapper.Label>
+          <Wrapper.Label>Jami to'lov:</Wrapper.Label>
           <Wrapper.Text>{data?.total}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Статус путовки:</Wrapper.Label>
+          <Wrapper.Label>Vaucher holati:</Wrapper.Label>
           <Wrapper.Text>
-            {data?.hasVoucher ? "C путовки" : "Нет путовки"}
+            {data?.hasVoucher ? "Voucher bilan" : "Voucher siz"}
           </Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Оплата наличными:</Wrapper.Label>
+          <Wrapper.Label>Naqd to'lov:</Wrapper.Label>
           <Wrapper.Text>{data?.paidByCash || 0}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Оплата картой:</Wrapper.Label>
+          <Wrapper.Label>Karta orqali to'lov:</Wrapper.Label>
           <Wrapper.Text>{data?.paidByPlasticCard || 0}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер расположенного здание:</Wrapper.Label>
+          <Wrapper.Label>To'lov farqi:</Wrapper.Label>
+          <Wrapper.Text>
+            {data.total - (data?.paidByPlasticCard + data?.paidByCash) > 0
+              ? `-${data.total - (data?.paidByPlasticCard + data?.paidByCash)}`
+              : `+${Math.abs(
+                  data.total - (data?.paidByPlasticCard + data?.paidByCash)
+                )}` || 0}
+          </Wrapper.Text>
+        </Wrapper.InputContainer>
+      </Wrapper.InputWrapper>
+      <Wrapper.InputWrapper>
+        <Wrapper.InputContainer>
+          <Wrapper.Label>Joylashgan bino raqamu:</Wrapper.Label>
           <Wrapper.Text>{buildingDetecter(data?.buildingNumber)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Номер расположенного комната:</Wrapper.Label>
+          <Wrapper.Label>Joyalashgan xona raqami:</Wrapper.Label>
           <Wrapper.Text>{data?.roomNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>

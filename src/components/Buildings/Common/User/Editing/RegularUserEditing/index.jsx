@@ -7,6 +7,7 @@ import { useQueryClient } from "react-query";
 import { useUpdateUser } from "../../../../../../hooks/useQuery/useBuildingActions";
 import useNotification from "../../../../../../hooks/useNotification";
 import { switchUserModalVisibility } from "../../../../../../redux/modalSlice";
+import locale from "antd/es/date-picker/locale/ru_RU";
 
 const { RangePicker } = DatePicker;
 
@@ -62,108 +63,116 @@ const RegularUserEditing = () => {
         onFinish={(e) => changeUserHandler(e)}
       >
         <Form.Item
-          label="Полное имя"
+          label="To'liq ism"
           name="fullName"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите фамилию!",
+              message: "Iltimos, to'liq ismni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="День рождения"
+          label="Tug'ulgan sana"
           name="birthDate"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, выберите дата рождения!",
+              message: "Iltimos, tug'ulgan sanani kiriting!",
             },
           ]}
         >
-          <DatePicker />
+          <DatePicker
+            defaultValue={dayjs("", "DD.MM.YYYY")}
+            locale={locale}
+            format={"DD.MM.YYYY"}
+          />
         </Form.Item>
         <Form.Item
-          label="Номер паспорта"
+          label="Passport raqam"
           name="passportID"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер паспорта!",
+              message: "Iltimos, passport raqamini kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Номер телефона"
+          label="Tel raqam"
           name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер телефона!",
+              message: "Iltimos, tel raqamni kirting!",
             },
           ]}
         >
           <Input addonBefore="+998" type="number" />
         </Form.Item>
         <Form.Item
-          label="Адрес"
+          label="Adres"
           name="address"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите адрес!",
+              message: "Iltimos, adresni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Дата прибытия"
+          label="Sana oralig'"
           name="arrivalDate"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, выберите дата прибытия!",
+              message: "Iltimos, kelish sanasini kiriting!",
             },
           ]}
         >
-          <RangePicker />
+          <RangePicker
+            defaultValue={dayjs("", "DD.MM.YYYY")}
+            locale={locale}
+            format={"DD.MM.YYYY"}
+          />
         </Form.Item>
         <Form.Item
-          label="Стоимость за один день"
+          label="Kunlik narx"
           name="dayCost"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите стоимость дней!",
+              message: "Iltimos, kunlik narxni kriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Оплата наличными"
+          label="Naqd to'lov"
           name="paidByCash"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите оплата наличными!",
+              message: "Iltimos, naqd to'lovni kiriting!",
             },
           ]}
         >
           <Input type="number" />
         </Form.Item>
         <Form.Item
-          label="Оплата картой"
+          label="Karta orqali to'lov"
           name="paidByPlasticCard"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите оплата картой!",
+              message: "Iltimos, karta orqali to'lovni kriting!",
             },
           ]}
         >
@@ -176,10 +185,10 @@ const RegularUserEditing = () => {
             style={{ marginRight: "10px" }}
             onClick={() => dispatch(switchUserModalVisibility())}
           >
-            Отмена
+            Bekor qilish
           </Button>
           <Button type="primary" htmlType="submit">
-            Редактировать
+            O'zgaritirish
           </Button>
         </Wrapper.InputWrapper>
       </Form>

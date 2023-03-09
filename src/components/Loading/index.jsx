@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <Wrapper>
       <LoadingOutlined style={{ fontSize: "5vh", marginBottom: "30px" }} />
-      <Wrapper.Title>Загрузка страница...</Wrapper.Title>
+      <Wrapper.Title>Sayt yuklanmoqda...</Wrapper.Title>
     </Wrapper>
   );
 };

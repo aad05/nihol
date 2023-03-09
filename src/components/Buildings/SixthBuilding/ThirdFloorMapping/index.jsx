@@ -18,12 +18,12 @@ const SecondBuildingMapping = () => {
 
   return (
     <MappingWrapper>
-      <FloorTitle>3 этаж</FloorTitle>
+      <FloorTitle>3 qavat</FloorTitle>
       {!data && <Alert message="Сервер не может ответить!" type="error" />}
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>
-            <RoomTitle>{roomValue?.roomNumber} комната</RoomTitle>
+            <RoomTitle>{roomValue?.roomNumber} xona</RoomTitle>
             <MappingRoomContainer>
               {roomValue?.cliente?.map((value, index) =>
                 !value.userID && !value.isBooked ? (

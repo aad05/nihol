@@ -10,9 +10,9 @@ const Error = () => {
     <Wrapper>
       <Result
         status={errorStatus}
-        title="Упс! Что-то пошло не так!"
-        subTitle="Сервер работает некорректно!
-        Пожалуйста, повторите попытку после проверки подключения к Интернету и нажмите кнопку «Обновить»."
+        title="Voy! Nimadir noto'g'ri bajarildi!"
+        subTitle="Server to'g'ri ishlamayapti! 
+        Internetga ulanishingizni tekshirgandan so'ng, qayta urinib ko'ring va «Yangilash» tugmasini bosing."
         extra={
           <Button
             type="primary"
@@ -21,7 +21,7 @@ const Error = () => {
               window.location.reload();
             }}
           >
-            Обновить
+            Yangilash
           </Button>
         }
       />

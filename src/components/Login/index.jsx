@@ -90,10 +90,10 @@ const Login = () => {
       <Wrapper.Right>
         <Wrapper.Right.Container>
           {/* <Wrapper.Logo src={logo} alt="logo" /> */}
-          <Wrapper.Title>И снова здравствуйте!</Wrapper.Title>
+          <Wrapper.Title>Yana bir bor salom!</Wrapper.Title>
           <Wrapper.Description>
-            Мы стремимся предоставлять лучший сервис каждый день, чем вчера.
-            &#128526; &#128579;
+            Biz har kuni kechagidan ko'ra yaxshiroq xizmat ko'rsatishga
+            intilamiz.
           </Wrapper.Description>
           <Wrapper.Input
             allowClear={true}
@@ -102,14 +102,14 @@ const Login = () => {
             onChange={(e) => onChangeHandler(e)}
             value={userInfo.phoneNumber}
             name="phoneNumber"
-            placeholder="Номер телефона"
+            placeholder="Tel raqam"
           />
           <Wrapper.InputPassword
             onChange={(e) => onChangeHandler(e)}
             onKeyDown={(e) => onKeyDownHandler(e)}
             value={userInfo.password}
             name="password"
-            placeholder="Пароль"
+            placeholder="Rarol"
             maxLength={9}
             minLength={6}
           />

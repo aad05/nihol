@@ -26,19 +26,19 @@ const SecondMoveBuilding = () => {
         <MovingBuildingLoader />
       ) : (
         <>
-          <Wrapper.RoomTitle>Выберите номер комната:</Wrapper.RoomTitle>
+          <Wrapper.RoomTitle>Xona raqamini tanlang:</Wrapper.RoomTitle>
           <Select
             defaultValue="0"
             onChange={(e) => setSelectedRoomOrder(e)}
             options={data?.map(({ roomOrder, roomNumber }) => ({
-              label: `${roomNumber} комната`,
+              label: `${roomNumber} xona`,
               value: `${roomOrder}`,
             }))}
           />
-          <Wrapper.RoomTitle>Выберите положения:</Wrapper.RoomTitle>
+          <Wrapper.RoomTitle>Joylashuvni tanlang:</Wrapper.RoomTitle>
           <MappingRoomWrapper>
             <RoomTitle>
-              {data[selectedRoomOrder || 0]?.roomNumber} комната
+              {data[selectedRoomOrder || 0]?.roomNumber} xona
             </RoomTitle>
             <MappingRoomContainer>
               {data[selectedRoomOrder || 0]?.cliente?.map((value) =>

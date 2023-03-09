@@ -21,7 +21,7 @@ const FifthBuilding = () => {
   return (
     <Wrapper>
       <ModalVisibility />
-      <CustomTitle showBackWard={true}>5 Здание</CustomTitle>
+      <CustomTitle showBackWard={true}>5 Bino</CustomTitle>
       <Wrapper.MapWrapper>
         {firstFloorLoading || secondFloorLoading ? (
           <Spin />

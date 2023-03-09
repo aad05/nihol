@@ -18,7 +18,7 @@ const BookedRoom = ({ clienteInfo }) => {
       }}
     >
       {clienteInfo?.isBooked && (
-        <Tooltip placement="top" title="Это место забронировано">
+        <Tooltip placement="top" title="Bu yer bronlangan!">
           <BookedTag color="warning">
             <ExclamationCircleOutlined />
           </BookedTag>

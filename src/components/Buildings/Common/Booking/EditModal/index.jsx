@@ -29,7 +29,7 @@ const EditBooking = () => {
   };
   return (
     <Modal
-      title="Изменить бронирование"
+      title="Bron o'zgaritish"
       open={bookedUserUpdateModalVisibility}
       onCancel={() => dispatch(switchUpdateBookingModalVisibility())}
       footer={false}
@@ -62,72 +62,76 @@ const EditBooking = () => {
         onFinish={(e) => updateBookedUser(e)}
       >
         <Form.Item
-          label="Полное имя"
+          label="To'liq ism"
           name="fullName"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите полное имя!",
+              message: "Iltimos, to'liq ismni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Адрес"
+          label="Adress"
           name="address"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите адрес!",
+              message: "Iltimos, adressni kiriting!",
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Номер телефона"
+          label="Tel raqam"
           name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер телефона!",
+              message: "Iltimos, tel raqam kiriting!",
             },
           ]}
         >
           <Input addonBefore={"+998"} type="number" />
         </Form.Item>
         <Form.Item
-          label="Диапазон дат"
+          label="Sana oralig'"
           name="arrivalDate"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, выберите диапазон дат!",
+              message: "Iltimos, sana oralig'i kiriting!",
             },
           ]}
         >
-          <RangePicker locale={locale} />
+          <RangePicker
+            locale={locale}
+            defaultValue={dayjs("", "DD.MM.YYYY")}
+            format={"DD.MM.YYYY"}
+          />
         </Form.Item>
         <Form.Item
-          label="Предоплата"
+          label="Oldindan to'lov"
           name="prePaid"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите предоплата!",
+              message: "Iltimos, oldindan to'lov kiriting!",
             },
           ]}
         >
           <Input type="number" />
         </Form.Item>
         <Form.Item
-          label="Номер расположенного здание"
+          label="Joylashgan bino raqami"
           name="buildingNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер расположенного здание!",
+              message: "Iltimos, joylashgan bino raqami kiriting!",
             },
           ]}
         >
@@ -146,12 +150,12 @@ const EditBooking = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Номер расположенного комната"
+          label="Joylashgan xona raqami"
           name="roomNumber"
           rules={[
             {
               required: true,
-              message: "Пожалуйста, введите номер расположенного комната!",
+              message: "Iltimos, joylashgan xona raqami kiriting!",
             },
           ]}
         >
@@ -164,10 +168,10 @@ const EditBooking = () => {
             style={{ marginRight: "10px" }}
             onClick={() => dispatch(switchUpdateBookingModalVisibility())}
           >
-            Отмена
+            Berok qilish
           </Button>
           <Button type="primary" htmlType="submit">
-            Изменить
+            O'zgaritirish
           </Button>
         </Form.Item>
       </Form>

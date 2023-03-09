@@ -13,7 +13,7 @@ const EmptyRoom = ({ clienteInfo }) => {
       type: "info",
       title: "Вы уверены ?!",
       content: "Что вы хотите переместить пользователя?",
-      cancelText: "Отмена",
+      cancelText: "Bekor qilish",
       okText: "Я уверен",
       onOk: () => {
         mutate({

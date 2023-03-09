@@ -15,16 +15,16 @@ const UserModal = () => {
     <Modal
       open={userModalVisibility}
       onCancel={() => dispatch(switchUserModalVisibility())}
-      title={"Информация о пользователе"}
+      title={"Mijoz haqida ma'lumot"}
       footer={false}
     >
       <Segmented
         block
-        options={["Наблюдение", "Забронированные даты", "Редактирование"]}
+        options={["Kuzatuv", "Bronlangan joylar", "O'zgartirish"]}
         onChange={(e) =>
-          e === "Наблюдение"
+          e === "Kuzatuv"
             ? setType("observing")
-            : e === "Редактирование"
+            : e === "O'zgartirish"
             ? setType("editing")
             : setType("booking")
         }

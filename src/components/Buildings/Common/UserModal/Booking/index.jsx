@@ -27,7 +27,7 @@ const Booking = () => {
     <>
       <Wrapper>
         {!clienteData?.isBooked ? (
-          <Result status="404" subTitle="Нет ни одной забронированной даты" />
+          <Result status="404" subTitle="Bonlangan joylar mavjud emas!" />
         ) : (
           bookedData?.bookedClienteList?.map((value) => (
             <BookedUser
@@ -45,7 +45,7 @@ const Booking = () => {
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
       >
         <Button onClick={() => dispatch(switchUserModalVisibility())}>
-          Отмена
+          Bekor qilish
         </Button>
         <Button
           type="primary"
@@ -55,7 +55,7 @@ const Booking = () => {
             )
           }
         >
-          Добавить брон
+          Bron qo'shish
         </Button>
       </Wrapper.InputWrapper>
     </>

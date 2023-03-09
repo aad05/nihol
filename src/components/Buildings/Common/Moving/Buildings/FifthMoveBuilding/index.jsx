@@ -33,34 +33,34 @@ const FifthMoveBuilding = () => {
         <MovingBuildingLoader />
       ) : (
         <>
-          <Wrapper.FloorTitle>Выберите номер этажа:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>Qavat sonini tanlang:</Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedFloorOrder(e)}
             options={[
-              { label: "1 этаж", value: "1" },
-              { label: "2 этаж", value: "2" },
+              { label: "1 qavat", value: "1" },
+              { label: "2 qavat", value: "2" },
             ]}
           />
-          <Wrapper.FloorTitle>Выберите номер комната:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>Xona sonini tanlang:</Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedRoomOrder(e)}
             options={floors[Number(selectedFloorOrder) - 1].map(
               ({ roomOrder, roomNumber }) => ({
-                label: `${roomNumber} комната`,
+                label: `${roomNumber} xona`,
                 value: `${roomOrder}`,
               })
             )}
           />
-          <Wrapper.RoomTitle>Выберите положения:</Wrapper.RoomTitle>
+          <Wrapper.RoomTitle>Joylashuvni tanlang:</Wrapper.RoomTitle>
           <MappingRoomWrapper>
             <RoomTitle>
               {
                 floors[Number(selectedFloorOrder) - 1][selectedRoomOrder || 0]
                   ?.roomNumber
               }{" "}
-              комната
+              xona
             </RoomTitle>
             <MappingRoomContainer>
               {floors[Number(selectedFloorOrder) - 1][
