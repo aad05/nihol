@@ -4,21 +4,26 @@ import { Outlet } from "react-router-dom";
 import { Avatar, Dropdown, Modal } from "antd";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
-import { navbarMenuAPI } from "../../Generic/MenuAPI";
+import { useMenuAPI } from "../../Generic/MenuAPI";
 import { useDispatch } from "react-redux";
 import { switchUserModalVisibility } from "../../redux/navbarSlice";
+import LocaleModal from "./LocaleModal";
+import { switchLocaleModalVisibility } from "../../redux/modalSlice";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
+  const { navbarMenuAPI } = useMenuAPI();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signOut = useSignOut();
 
   const confirm = () => {
     Modal.confirm({
-      title: "Tasdiqlang",
-      content: "Haqiqatan ham takr etishni xohlaysizmi?",
-      okText: "Tark etish",
-      cancelText: "Bekor qilish",
+      title: t("homeLogOutWarning.title"),
+      content: t("homeLogOutWarning.content"),
+      okText: t("modal.modal_logout"),
+      cancelText: t("modal.modal_canceling"),
       okButtonProps: {
         style: { background: "red" },
       },
@@ -31,6 +36,7 @@ const Navbar = () => {
 
   return (
     <Wrapper>
+      <LocaleModal />
       <ProfileModal />
       <Wrapper.Container>
         {/* <Wrapper.Logo src={logo} onClick={navigateHandle} /> */}
@@ -44,6 +50,8 @@ const Navbar = () => {
                 settingClickHandler: () =>
                   dispatch(switchUserModalVisibility()),
                 logOutClickHandler: () => confirm(),
+                languageChangeHandler: () =>
+                  dispatch(switchLocaleModalVisibility()),
               }),
             }}
             trigger={["click"]}

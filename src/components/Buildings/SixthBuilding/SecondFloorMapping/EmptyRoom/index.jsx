@@ -7,19 +7,20 @@ import {
   switchAddUserModalVisibility,
 } from "../../../../../redux/modalSlice";
 import { setSelectedUserData } from "../../../../../redux/userSlice";
+import { useTranslation } from "react-i18next";
 
 const { confirm } = Modal;
 
 const EmptyRoom = ({ clienteInfo }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const onClickHandler = () => {
     dispatch(
       setSelectedUserData({ ...clienteInfo, mutationBuildingNumber: "6-2" })
     );
     return confirm({
-      title: "O'rin bo'sh",
-      content:
-        "Bu o'rin bo'sh. Yangi foydalanuvchi qo'shish uchun «Qo'shish» tugmasini bosing. Yoki bu joyni band qilish uchun  «Bronlash» tugmasini bosing.",
+      title: t("confirm.title"),
+      content: t("confirm.content"),
       closable: true,
       footer: (
         <ConfirmMomdalButtonWrapper>
@@ -31,7 +32,7 @@ const EmptyRoom = ({ clienteInfo }) => {
               );
             }}
           >
-            Bronlash
+            {t("confirm.book")}
           </Button>
           <Button
             onClick={() => {
@@ -42,7 +43,7 @@ const EmptyRoom = ({ clienteInfo }) => {
             }}
             type="primary"
           >
-            Qo'shish
+            {t("confirm.add")}
           </Button>
         </ConfirmMomdalButtonWrapper>
       ),

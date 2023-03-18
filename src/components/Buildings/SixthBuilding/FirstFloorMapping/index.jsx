@@ -11,20 +11,24 @@ import RoomComponent from "./Room";
 import EmptyRoom from "./EmptyRoom";
 import BookedRoom from "./BookedRoom";
 import { Alert } from "antd";
+import { useTranslation } from "react-i18next";
 
 const SecondBuildingMapping = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/6-1");
   console.log(data);
 
   return (
     <MappingWrapper>
-      <FloorTitle>1 qavat</FloorTitle>
+      <FloorTitle>1 {t("building.floor")}</FloorTitle>
       {!data && <Alert message="Сервер не может ответить!" type="error" />}
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>
-            <RoomTitle>{roomValue?.roomNumber} xona</RoomTitle>
+            <RoomTitle>
+              {roomValue?.roomNumber} {t("building.room")}
+            </RoomTitle>
             <MappingRoomContainer>
               {roomValue?.cliente?.map((value, index) =>
                 !value.userID && !value.isBooked ? (

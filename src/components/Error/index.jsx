@@ -2,17 +2,18 @@ import { Wrapper } from "./style";
 import { Button, Result } from "antd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Error = () => {
+  const { t } = useTranslation();
   const { errorStatus } = useSelector((state) => state.error);
   const navigate = useNavigate();
   return (
     <Wrapper>
       <Result
         status={errorStatus}
-        title="Voy! Nimadir noto'g'ri bajarildi!"
-        subTitle="Server to'g'ri ishlamayapti! 
-        Internetga ulanishingizni tekshirgandan so'ng, qayta urinib ko'ring va «Yangilash» tugmasini bosing."
+        title={t("error.title")}
+        subTitle={t("error.subtitle")}
         extra={
           <Button
             type="primary"
@@ -21,7 +22,7 @@ const Error = () => {
               window.location.reload();
             }}
           >
-            Yangilash
+            {t("error.button")}
           </Button>
         }
       />

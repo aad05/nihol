@@ -6,9 +6,11 @@ import { useDispatch } from "react-redux";
 import { switchUserModalVisibility } from "../../../../../redux/modalSlice";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { setSelectedUserData } from "../../../../../redux/userSlice";
+import { useTranslation } from "react-i18next";
 import { Tooltip } from "antd";
 
 const RoomComponent = ({ clienteInfo }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const useQuery = useQueryHandler();
 
@@ -34,7 +36,7 @@ const RoomComponent = ({ clienteInfo }) => {
       }}
     >
       {clienteInfo?.isBooked && (
-        <Tooltip placement="top" title="Bu yer bronlangan!">
+        <Tooltip placement="top" title={t("booking.title")}>
           <BookedTag color="warning">
             <ExclamationCircleOutlined />
           </BookedTag>

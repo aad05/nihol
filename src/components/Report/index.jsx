@@ -9,6 +9,7 @@ import ReportOptions from "./Options";
 import { useState } from "react";
 import useQueryHandler from "../../hooks/useQuery";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 const { RangePicker } = DatePicker;
 const returnNumDate = (date) =>
@@ -19,6 +20,7 @@ const returnNumDate = (date) =>
   });
 
 const Report = () => {
+  const { t } = useTranslation();
   const useQuery = useQueryHandler();
   const [loading, setLoading] = useState(false);
   const { selectedOptions } = useSelector((state) => state.report);
@@ -70,7 +72,7 @@ const Report = () => {
   return (
     <CenteredWrapper>
       <ReportOptions />
-      <CustomTitle showBackWard={true}>Hisobot</CustomTitle>
+      <CustomTitle showBackWard={true}>{t("home.home_report")}</CustomTitle>
       <Card size="small">
         <Form
           name="basic"
@@ -90,12 +92,12 @@ const Report = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="Sana oralig'"
+            label={t("home.home_report_range_picker")}
             name="dateRange"
             rules={[
               {
                 required: true,
-                message: "Iltimos, sana oralig'ini kiriting!",
+                message: t("formErrors.datapicker_error"),
               },
             ]}
           >
@@ -105,13 +107,13 @@ const Report = () => {
               format={"DD.MM.YYYY"}
             />
           </Form.Item>
-          <Form.Item label="Parameterlar" name="options">
+          <Form.Item label={t("home.home_report_parameters")} name="options">
             <Button
               type="primary"
               onClick={() => dispatch(switchReportOptionsModalVisibility())}
               disabled={loading}
             >
-              Parameter tanlash
+              {t("home.home_report_parameters_select")}
             </Button>
           </Form.Item>
           <Form.Item
@@ -123,29 +125,29 @@ const Report = () => {
               disabled={loading}
               loading={loading}
             >
-              Tortib olish
+              {t("home.home_report_download")}
             </Button>
           </Form.Item>
         </Form>
       </Card>
-      <Title>Statistika</Title>
+      <Title>{t("home.home_report_statistics")}</Title>
       <Card bordered={false} style={{ margin: "0 0 50px 0" }}>
         <Card bordered={false}>
           <Statistic
-            title="Umumiy odamlar soni"
-            value={isLoading ? "Hisoblanmoqda..." : data.allUsers}
+            title={t("home.home_report_all_users_count")}
+            value={isLoading ? "..." : data.allUsers}
           />
         </Card>
         <Card bordered={false} style={{ margin: "10px 0" }}>
           <Statistic
-            title="Umumiy bronlar soni"
-            value={isLoading ? "Hisoblanmoqda..." : data.allBookedUsers}
+            title={t("home.home_report_all_books_count")}
+            value={isLoading ? "..." : data.allBookedUsers}
           />
         </Card>
         <Card bordered={false} style={{ margin: "10px 0" }}>
           <Statistic
-            title="Umumiy bo'sh joylar soni"
-            value={isLoading ? "Hisoblanmoqda..." : data?.allFreeRooms}
+            title={t("home.home_report_all_empty_places_count")}
+            value={isLoading ? "..." : data?.allFreeRooms}
           />
         </Card>
       </Card>

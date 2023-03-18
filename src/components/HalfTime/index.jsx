@@ -3,8 +3,10 @@ import { CenteredWrapper } from "../../Generic/Styles";
 import useQueryHandler from "../../hooks/useQuery";
 import { Spin } from "antd";
 import UserTable from "../../Generic/Table";
+import { useTranslation } from "react-i18next";
 
 const HalfTime = () => {
+  const { t } = useTranslation();
   const useQuery = useQueryHandler();
 
   const { isLoading, data } = useQuery({
@@ -14,7 +16,9 @@ const HalfTime = () => {
 
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Oraliq muddat</CustomTitle>
+      <CustomTitle showBackWard={true}>
+        {t("home.home_half_users_section")}
+      </CustomTitle>
       {isLoading ? <Spin /> : <UserTable data={data} />}
     </CenteredWrapper>
   );

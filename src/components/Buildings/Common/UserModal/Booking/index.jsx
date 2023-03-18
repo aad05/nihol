@@ -7,8 +7,10 @@ import {
 } from "../../../../../redux/modalSlice";
 import BookedUser from "./BookedUser";
 import { useQueryClient } from "react-query";
+import { useTranslation } from "react-i18next";
 
 const Booking = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { selectedUserData } = useSelector((state) => state.user);
@@ -27,7 +29,7 @@ const Booking = () => {
     <>
       <Wrapper>
         {!clienteData?.isBooked ? (
-          <Result status="404" subTitle="Bonlangan joylar mavjud emas!" />
+          <Result status="404" subTitle={t("confirm.noBookedPlaces")} />
         ) : (
           bookedData?.bookedClienteList?.map((value) => (
             <BookedUser
@@ -45,7 +47,7 @@ const Booking = () => {
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
       >
         <Button onClick={() => dispatch(switchUserModalVisibility())}>
-          Bekor qilish
+          {t("modal.modal_canceling")}
         </Button>
         <Button
           type="primary"
@@ -55,7 +57,7 @@ const Booking = () => {
             )
           }
         >
-          Bron qo'shish
+          {t("modal.modal_add")}
         </Button>
       </Wrapper.InputWrapper>
     </>

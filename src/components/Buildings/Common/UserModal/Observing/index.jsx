@@ -11,10 +11,12 @@ import { setMovingUserData } from "../../../../../redux/userSlice";
 import VoucherUser from "../../../Common/User/Observing/VoucherUser";
 import RegularUser from "../../../Common/User/Observing/RegularUser";
 import EmptyUser from "../EmptyUser";
+import { useTranslation } from "react-i18next";
 
 const { confirm } = Modal;
 
 const Observing = () => {
+  const { t } = useTranslation();
   const { mutate: deleteMutate } = useDelete();
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -29,10 +31,11 @@ const Observing = () => {
 
   const onDelete = () => {
     return confirm({
-      title: "Ishonch hosil qiling!",
-      content: "Oʻchirish tasdiqlangach, bu amalni ortga qaytarib boʻlmaydi.",
-      cancelText: "Bekor qilish",
-      okText: "O'chirish",
+      title: t("confirm.deleteTitle"),
+      content: t("confirm.deleteContent"),
+      cancelText: t("modal.modal_canceling"),
+      okText: t("modal.modal_delete"),
+      okButtonProps: { danger: true },
       onOk: () => {
         deleteMutate(data);
         dispatch(switchUserModalVisibility());
@@ -54,7 +57,7 @@ const Observing = () => {
           style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
         >
           <Button onClick={() => dispatch(switchUserModalVisibility())}>
-            Bekor qilish
+            {t("modal.modal_canceling")}
           </Button>
           <Button
             type="primary"
@@ -73,10 +76,10 @@ const Observing = () => {
               );
             }}
           >
-            Ko'chrish
+            {t("modal.modal_move")}
           </Button>
           <Button danger type="primary" onClick={onDelete}>
-            O'chirish
+            {t("modal.modal_delete")}
           </Button>
         </Wrapper.InputWrapper>
       )}

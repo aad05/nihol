@@ -4,10 +4,14 @@ import locale from "antd/es/date-picker/locale/ru_RU";
 import { useAddBookedUser } from "../../../../../hooks/useQuery/useBuildingActions";
 import { switchAddBookingModalVisibility } from "../../../../../redux/modalSlice";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
+import { useMenuAPI } from "../../../../../Generic/MenuAPI";
 
 const { RangePicker } = DatePicker;
 
 const AddBooking = () => {
+  const { buildingDropDown } = useMenuAPI();
+  const { t } = useTranslation();
   const { mutate } = useAddBookedUser();
   const dispatch = useDispatch();
   const { bookingAddModalVisibility } = useSelector((state) => state.modal);
@@ -29,7 +33,7 @@ const AddBooking = () => {
 
   return (
     <Modal
-      title="Bron qo'shish"
+      title={t("commonBooking.addModal.title")}
       open={bookingAddModalVisibility.open}
       onCancel={() => {
         if (!bookingAddModalVisibility.isLoading) {
@@ -59,48 +63,48 @@ const AddBooking = () => {
         onFinish={(e) => addBookingUser(e)}
       >
         <Form.Item
-          label="To'liq ism"
+          label={t("formLabels.fullname")}
           name="fullName"
           rules={[
             {
               required: true,
-              message: "Iltimos, to'liq ismni kiriting!",
+              message: t("formErrors.fullname_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Adress"
+          label={t("formLabels.address")}
           name="address"
           rules={[
             {
               required: true,
-              message: "Iltimos, adressni kiriting!",
+              message: t("formErrors.address_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Tel raqam"
+          label={t("formLabels.phoneNumber")}
           name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Iltimos, tel raqamni kiriting!",
+              message: t("formErrors.phone_error"),
             },
           ]}
         >
           <Input addonBefore={"+998"} type="number" />
         </Form.Item>
         <Form.Item
-          label="Sana oralig'"
+          label={t("formLabels.dateRange")}
           name="arrivalDate"
           rules={[
             {
               required: true,
-              message: "Iltimos, sana oralig'i kiriting!",
+              message: t("formErrors.datapicker_error"),
             },
           ]}
         >
@@ -111,49 +115,36 @@ const AddBooking = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Oldindan to'lov"
+          label={t("formLabels.prepaid")}
           name="prePaid"
           rules={[
             {
               required: true,
-              message: "Iltimos, o'ldindan to'lovni kiriting!",
+              message: t("formErrors.prepaid_error"),
             },
           ]}
         >
           <Input type="number" />
         </Form.Item>
         <Form.Item
-          label="Joylashgan bino raqami"
+          label={t("formLabels.buildingNumber")}
           name="buildingNumber"
           rules={[
             {
               required: true,
-              message: "Iltimos, joylashgan bino raqamini kiriting!",
+              message: t("formErrors.building_error"),
             },
           ]}
         >
-          <Select
-            disabled
-            options={[
-              { value: "building-2", label: "Здание 2", selected: true },
-              { value: "building-3", label: "Здание 3" },
-              { value: "building-4", label: "Здание 4" },
-              { value: "building-5-1", label: "Здание 5 - 1 этаж" },
-              { value: "building-5-2", label: "Здание 5 - 2 этаж" },
-              { value: "building-6-1", label: "Здание 6 - 1 этаж" },
-              { value: "building-6-2", label: "Здание 6 - 2 этаж" },
-              { value: "building-6-3", label: "Здание 6 - 3 этаж" },
-              { value: "building-cottage", label: "Коттедж" },
-            ]}
-          />
+          <Select disabled options={buildingDropDown} />
         </Form.Item>
         <Form.Item
-          label="Joylashgan hona raqami"
+          label={t("formLabels.roomNumber")}
           name="roomNumber"
           rules={[
             {
               required: true,
-              message: "Iltimos, joylashgan xona raqamini kiriting!",
+              message: t("formErrors.room_error"),
             },
           ]}
         >
@@ -171,14 +162,14 @@ const AddBooking = () => {
               )
             }
           >
-            Bekor qilish
+            {t("modal.modal_canceling")}
           </Button>
           <Button
             loading={bookingAddModalVisibility.loading}
             type="primary"
             htmlType="submit"
           >
-            Qo'shish
+            {t("modal.modal_add")}
           </Button>
         </Form.Item>
       </Form>

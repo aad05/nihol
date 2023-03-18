@@ -1,21 +1,24 @@
 import { Button, Input, Table } from "antd";
 import dayjs from "dayjs";
-import { buildingDetecter, useBuildingNavigator } from "../InputAPI";
+import { useInput } from "../InputAPI";
 import { SearchOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const UserTable = ({ data }) => {
+  const { t } = useTranslation();
+  const { buildingDetecter, useBuildingNavigator } = useInput();
   const buildingNavigator = useBuildingNavigator();
   const rtl = new Intl.DateTimeFormat();
   const columns = [
     {
-      title: "To'liq ism",
+      title: t("userTable.fullname"),
       dataIndex: "fullName",
       key: "fullName",
       filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
         return (
           <Input
             autoFocus
-            placeholder="Qidirish..."
+            placeholder={t("inputPlaceHolder.search")}
             value={selectedKeys[0]}
             onChange={(e) => {
               setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -33,7 +36,7 @@ const UserTable = ({ data }) => {
       },
     },
     {
-      title: "Tel raqam",
+      title: t("userTable.phonenumber"),
       render: (_, record) => (
         <a
           href={`tel:+998${record?.phoneNumber}`}
@@ -45,7 +48,7 @@ const UserTable = ({ data }) => {
           <Input
             autoFocus
             addonBefore="+998"
-            placeholder="Qidirish..."
+            placeholder={t("inputPlaceHolder.search")}
             value={selectedKeys[1]}
             type="number"
             onChange={(e) => {
@@ -63,28 +66,28 @@ const UserTable = ({ data }) => {
       },
     },
     {
-      title: "Kelgan sana",
+      title: t("userTable.arrivedDate"),
       key: "arrivalDate",
       render: (_, record) => rtl.format(record?.arrivalDate),
     },
     {
-      title: "Tugash sana",
+      title: t("userTable.endDate"),
       key: "endDate",
       render: (_, record) => rtl.format(record?.endDate),
     },
     {
-      title: "Qolgan kun",
+      title: t("userTable.leftDay"),
       key: "raminedDays",
       render: (_, record) =>
         dayjs(Number(record?.endDate)).diff(new Date().toDateString(), "d"),
     },
     {
-      title: "Jami to'lov",
+      title: t("userTable.totalPay"),
       key: "total",
       render: (_, record) => (record.hasVoucher ? "С путовкой" : record.total),
     },
     {
-      title: "Naqd to'lov",
+      title: t("userTable.payByCash"),
       key: "paidByCash",
       render: (_, record) =>
         record.hasVoucher
@@ -94,7 +97,7 @@ const UserTable = ({ data }) => {
           : "0",
     },
     {
-      title: "Karta orqali to'lov",
+      title: t("userTable.payByCard"),
       key: "paidByPlasticCard",
       render: (_, record) =>
         record.hasVoucher
@@ -104,7 +107,7 @@ const UserTable = ({ data }) => {
           : "0",
     },
     {
-      title: "To'lov farqi",
+      title: t("userTable.payDifference"),
       key: "paymentDifference",
       render: (_, record) =>
         record.total - (record?.paidByPlasticCard + record?.paidByCash) > 0
@@ -116,24 +119,24 @@ const UserTable = ({ data }) => {
             )}` || 0,
     },
     {
-      title: "Bino",
+      title: t("userTable.building"),
       key: "buildingNumber",
       render: (_, record) => buildingDetecter(record.buildingNumber),
     },
     {
-      title: "Xona",
+      title: t("userTable.room"),
       key: "roomNumber",
       dataIndex: "roomNumber",
     },
     {
-      title: "Xarakat",
+      title: t("userTable.action"),
       key: "actions",
       render: (_, record) => (
         <Button
           onClick={() => buildingNavigator(record.buildingNumber)}
           type="primary"
         >
-          O'tish
+          {t("userTable.go")}
         </Button>
       ),
     },

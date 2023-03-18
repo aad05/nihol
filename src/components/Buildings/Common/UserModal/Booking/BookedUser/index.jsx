@@ -3,7 +3,7 @@ import useQueryHandler from "../../../../../../hooks/useQuery";
 import { EllipsisOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useDeleteBookedUser } from "../../../../../../hooks/useQuery/useBuildingActions";
-import { bookedUserMenuAPI } from "../../../../../../Generic/MenuAPI";
+import { useMenuAPI } from "../../../../../../Generic/MenuAPI";
 import {
   switchBookedUserActivateModalVisibility,
   switchBookedUserDetailedModalVisibility,
@@ -12,8 +12,11 @@ import {
 import { setSelectedBookedData } from "../../../../../../redux/userSlice";
 import { IconCircleWrapper } from "../../../../../../Generic/Styles";
 import { useQueryClient } from "react-query";
+import { useTranslation } from "react-i18next";
 
 const BookedUser = ({ idCollection }) => {
+  const { t } = useTranslation();
+  const { bookedUserMenuAPI } = useMenuAPI();
   const queryClient = useQueryClient();
   const { selectedUserData } = useSelector((state) => state.user);
   const { mutate: deleteMutate } = useDeleteBookedUser();
@@ -83,10 +86,10 @@ const BookedUser = ({ idCollection }) => {
         }
         layout="vertical"
       >
-        <Descriptions.Item label="Boshlanish sana">
+        <Descriptions.Item label={t("formLabels.startDate")}>
           {rtl?.format(data?.arrivalDate)}
         </Descriptions.Item>
-        <Descriptions.Item label="Tugash sana">
+        <Descriptions.Item label={t("formLabels.endDate")}>
           {rtl?.format(data?.endDate)}
         </Descriptions.Item>
       </Descriptions>

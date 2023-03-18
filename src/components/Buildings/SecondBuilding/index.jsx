@@ -3,8 +3,10 @@ import useQueryHandler from "../../../hooks/useQuery";
 import SecondBuildingMapping from "./Mapping";
 import { Wrapper } from "./style";
 import { Spin } from "antd";
+import { useTranslation } from "react-i18next";
 
 const SecondBuilding = () => {
+  const { t } = useTranslation();
   const useQuery = useQueryHandler();
 
   const { isLoading } = useQuery({
@@ -14,7 +16,7 @@ const SecondBuilding = () => {
 
   return (
     <Wrapper>
-      <CustomTitle showBackWard={true}>2 Bino</CustomTitle>
+      <CustomTitle showBackWard={true}>2 {t("building.building")}</CustomTitle>
       <Wrapper.MapWrapper>
         {isLoading ? <Spin /> : <SecondBuildingMapping />}
       </Wrapper.MapWrapper>

@@ -4,6 +4,7 @@ import navbarSlice from "./navbarSlice";
 import userSlice from "./userSlice";
 import reportSlice from "./reporSlice";
 import errorSlice from "./errorSlice";
+import localeSlice from "./localeSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     user: userSlice,
     report: reportSlice,
     error: errorSlice,
+    locale: localeSlice,
   },
 });

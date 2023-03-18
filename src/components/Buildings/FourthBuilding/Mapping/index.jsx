@@ -11,8 +11,10 @@ import EmptyRoom from "./EmptyRoom";
 import BookedRoom from "./BookedRoom";
 import ModalVisibility from "../../Common/ModalVisibility";
 import { Alert } from "antd";
+import { useTranslation } from "react-i18next";
 
 const SecondBuildingMapping = () => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData("accomodation/4");
 
@@ -23,7 +25,9 @@ const SecondBuildingMapping = () => {
       <MappingContainer>
         {data?.map((roomValue) => (
           <MappingRoomWrapper key={roomValue?._id}>
-            <RoomTitle>{roomValue?.roomNumber} xona</RoomTitle>
+            <RoomTitle>
+              {roomValue?.roomNumber} {t("building.room")}
+            </RoomTitle>
             <MappingRoomContainer>
               {roomValue?.cliente?.map((value, index) =>
                 !value.userID && !value.isBooked ? (

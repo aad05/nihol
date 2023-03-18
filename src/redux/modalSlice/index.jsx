@@ -21,6 +21,7 @@ const modalSlice = createSlice({
     bookedUserUpdateModalVisibility: false,
     bookedUserDetailedModalVisibility: false,
     reportOptionModalVisibility: false,
+    localeModalVisibitlity: false,
   },
   reducers: {
     switchUserModalVisibility(state) {
@@ -60,6 +61,9 @@ const modalSlice = createSlice({
         ...payload,
       };
     },
+    switchLocaleModalVisibility(state) {
+      state.localeModalVisibitlity = !state.localeModalVisibitlity;
+    },
   },
 });
 
@@ -73,5 +77,6 @@ export const {
   switchBookedUserDetailedModalVisibility,
   switchBookedUserActivateModalVisibility,
   switchMovingModalVisibility,
+  switchLocaleModalVisibility,
 } = modalSlice.actions;
 export default modalSlice.reducer;

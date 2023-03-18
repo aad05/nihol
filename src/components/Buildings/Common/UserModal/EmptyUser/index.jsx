@@ -1,13 +1,15 @@
 import { Button, Result } from "antd";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { switchAddUserModalVisibility } from "../../../../../redux/modalSlice";
 
 const EmptyUser = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   return (
     <Result
       status="404"
-      subTitle="Xona bo'sh. «Qo'shish» tugmasini bosish orqali yangi foydalanuvchi qo'shishingiz mumkin."
+      subTitle={t("emptyRoom.subTitle")}
       extra={
         <Button
           type="primary"
@@ -17,7 +19,7 @@ const EmptyUser = () => {
             )
           }
         >
-          Qo'shish
+          {t("emptyRoom.button")}
         </Button>
       }
     />

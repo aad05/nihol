@@ -1,10 +1,13 @@
 import { useQueryClient } from "react-query";
 import { useSelector } from "react-redux";
 import { Wrapper } from "../../style";
-import { buildingDetecter } from "../../../../../../Generic/InputAPI";
 import dayjs from "dayjs";
+import { useInput } from "../../../../../../Generic/InputAPI";
+import { useTranslation } from "react-i18next";
 
 const VoucherUser = () => {
+  const { t } = useTranslation();
+  const { buildingDetecter } = useInput();
   const queryClient = useQueryClient();
   const rtl = new Intl.DateTimeFormat();
   const { selectedUserData } = useSelector((state) => state.user);
@@ -14,49 +17,49 @@ const VoucherUser = () => {
     <Wrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>To'liq ism:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.fullname")}:</Wrapper.Label>
           <Wrapper.Text>{data?.fullName}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Tug'ulgan sana:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.birthDate")}:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.birthDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Passport raqam:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.passport_number")}:</Wrapper.Label>
           <Wrapper.Text>{data?.passportID}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Tel raqam:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.phoneNumber")}:</Wrapper.Label>
           <Wrapper.Text>+998{data?.phoneNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Adres:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.address")}:</Wrapper.Label>
           <Wrapper.Text>{data?.address}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Kelgan sana:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.cameDate")}:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.arrivalDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Tugash sana:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.endDate")}:</Wrapper.Label>
           <Wrapper.Text>{rtl.format(data?.endDate)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Qolgan kun:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.remainingDays")}:</Wrapper.Label>
           <Wrapper.Text>
             {dayjs(Number(data?.endDate)).diff(new Date().toDateString(), "d")}
           </Wrapper.Text>
@@ -64,45 +67,47 @@ const VoucherUser = () => {
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Voucher narx:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.voucherCost")}:</Wrapper.Label>
           <Wrapper.Text>{data?.voucherCost}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Voucher raqam:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.voucherNumber")}:</Wrapper.Label>
           <Wrapper.Text>{data?.voucherNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Ish joyi va lavozim:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.workPlace")}:</Wrapper.Label>
           <Wrapper.Text>{data?.workPlace}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Voucher bergan tashkilot:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.workOrganization")}:</Wrapper.Label>
           <Wrapper.Text>{data?.voucherOrganization}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Voucher holati:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.statusVoucher")}:</Wrapper.Label>
           <Wrapper.Text>
-            {data?.hasVoucher ? "Voucher bilan" : "Voucher siz"}
+            {data?.hasVoucher
+              ? t("formLabels.statusVoucherYup")
+              : t("formLabels.statusVoucherNah")}
           </Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Joylashgan bino raqam:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.buildingNumber")}:</Wrapper.Label>
           <Wrapper.Text>{buildingDetecter(data?.buildingNumber)}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>
       <Wrapper.InputWrapper>
         <Wrapper.InputContainer>
-          <Wrapper.Label>Joylashgan xona raqam:</Wrapper.Label>
+          <Wrapper.Label>{t("formLabels.roomNumber")}:</Wrapper.Label>
           <Wrapper.Text>{data?.roomNumber}</Wrapper.Text>
         </Wrapper.InputContainer>
       </Wrapper.InputWrapper>

@@ -2,13 +2,17 @@ import { Button, DatePicker, Form, Input, Select } from "antd";
 import locale from "antd/es/date-picker/locale/ru_RU";
 import dayjs from "dayjs";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { useMenuAPI } from "../../../../../../Generic/MenuAPI";
 import { useAddUser } from "../../../../../../hooks/useQuery/useBuildingActions";
 import { switchAddUserModalVisibility } from "../../../../../../redux/modalSlice";
 
 const { RangePicker } = DatePicker;
 
 const VoucherUser = () => {
+  const { buildingDropDown } = useMenuAPI();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { mutate } = useAddUser();
   const { selectedUserData } = useSelector((state) => state.user);
@@ -51,76 +55,72 @@ const VoucherUser = () => {
       onFinish={(e) => addUser(e)}
     >
       <Form.Item
-        label="To'liq ism"
+        label={t("formLabels.fullname")}
         name="fullName"
         rules={[
           {
             required: true,
-            message: "Iltimos, to'liq ismni kiriting!",
+            message: t("formErrors.fullname_error"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Tug'ulgan sana"
+        label={t("formLabels.birthDate")}
         name="birthDate"
         rules={[
           {
             required: true,
-            message: "Iltimos, tug'ulgan sanani kiriting!",
+            message: t("formErrors.birth_date_error"),
           },
         ]}
       >
-        <DatePicker
-          locale={locale}
-          defaultValue={dayjs("", "DD.MM.YYYY")}
-          format={"DD.MM.YYYY"}
-        />
+        <DatePicker locale={locale} format={"DD.MM.YYYY"} />
       </Form.Item>
       <Form.Item
-        label="Passport raqam"
+        label={t("formLabels.passport_number")}
         name="passportID"
         rules={[
           {
             required: true,
-            message: "Iltimos, passport raqamini kiriting!",
+            message: t("formErrors.passport_number_error"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Adres"
+        label={t("formLabels.address")}
         name="address"
         rules={[
           {
             required: true,
-            message: "Iltimos, adresni kiriting!",
+            message: t("formErrors.address_error"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Tel raqam"
+        label={t("formLabels.phoneNumber")}
         name="phoneNumber"
         rules={[
           {
             required: true,
-            message: "Iltimos, tel raqamni kirting!",
+            message: t("formErrors.phone_error"),
           },
         ]}
       >
         <Input addonBefore={"+998"} type="number" />
       </Form.Item>
       <Form.Item
-        label="Sana oralig'"
+        label={t("formLabels.dateRange")}
         name="arrivalDate"
         rules={[
           {
             required: true,
-            message: "Iltimos, sana oralig'ini kiriting!",
+            message: t("formErrors.datapicker_error"),
           },
         ]}
       >
@@ -131,85 +131,72 @@ const VoucherUser = () => {
         />
       </Form.Item>
       <Form.Item
-        label="Voucher narx"
+        label={t("formLabels.voucherCost")}
         name="voucherCost"
         rules={[
           {
             required: true,
-            message: "Iltimos, voucher narxini kiriting!",
+            message: t("formErrors.voucher_cost_error"),
           },
         ]}
       >
         <Input type="number" />
       </Form.Item>
       <Form.Item
-        label="Voucher raqam"
+        label={t("formLabels.voucherNumber")}
         name="voucherNumber"
         rules={[
           {
             required: true,
-            message: "Iltimos, voucher raqamini kiriting!",
+            message: t("formErrors.voucher_number_error"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Ish joyi va lavozim"
+        label={t("formLabels.workPlace")}
         name="workPlace"
         rules={[
           {
             required: true,
-            message: "Iltimos, ish joyi va lavozimini kiriting!",
+            message: t("formErrors.work_place_error"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Voucher bergan tashkilot"
+        label={t("formLabels.workOrganization")}
         name="voucherOrganization"
         rules={[
           {
             required: true,
-            message: "Iltimos, voucher bergan tashkilotni kiriting!",
+            message: t("formErrors.workOrganization"),
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Joylashgan bino raqam"
+        label={t("formLabels.buildingNumber")}
         name="buildingNumber"
         rules={[
           {
             required: true,
-            message: "Iltimos, joylashgan bino raqamini kiriting!",
+            message: t("formErrors.building_error"),
           },
         ]}
       >
-        <Select
-          disabled
-          options={[
-            { value: "building-2", label: "Здание 2", selected: true },
-            { value: "building-3", label: "Здание 3" },
-            { value: "building-4", label: "Здание 4" },
-            { value: "building-5-1", label: "Здание 5 - 1 этаж" },
-            { value: "building-5-2", label: "Здание 5 - 2 этаж" },
-            { value: "building-6-1", label: "Здание 6 - 1 этаж" },
-            { value: "building-6-2", label: "Здание 6 - 2 этаж" },
-            { value: "building-6-3", label: "Здание 6 - 3 этаж" },
-            { value: "building-cottage", label: "Коттедж" },
-          ]}
-        />
+        <Select disabled options={buildingDropDown} />
       </Form.Item>
       <Form.Item
-        label="Joylashgan xona raqam"
+        label={t("formLabels.roomNumber")}
         name="roomNumber"
         rules={[
           {
             required: true,
-            message: "Iltimos, joylashgan xona raqamini kiriting!",
+            message: t("formErrors.room_error"),
           },
         ]}
       >
@@ -218,13 +205,15 @@ const VoucherUser = () => {
       <Form.Item
         style={{ display: "flex", gridGap: "20px", justifyContent: "end" }}
       >
-        <Button style={{ marginRight: "10px" }}>Bekor qilish</Button>
+        <Button style={{ marginRight: "10px" }}>
+          {t("modal.modal_canceling")}
+        </Button>
         <Button
           loading={userAddModalVisibility.loading}
           type="primary"
           htmlType="submit"
         >
-          Qo'shish
+          {t("modal.modal_add")}
         </Button>
       </Form.Item>
     </Form>

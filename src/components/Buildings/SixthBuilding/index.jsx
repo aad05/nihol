@@ -6,8 +6,10 @@ import ThirdFloorMapping from "./ThirdFloorMapping";
 import ModalVisibility from "../Common/ModalVisibility";
 import { Wrapper } from "./style";
 import { Spin } from "antd";
+import { useTranslation } from "react-i18next";
 
 const SixthBuilding = () => {
+  const { t } = useTranslation();
   const useQuery = useQueryHandler();
 
   const { isLoading: firstFloorLoading } = useQuery({
@@ -26,7 +28,7 @@ const SixthBuilding = () => {
   return (
     <Wrapper>
       <ModalVisibility />
-      <CustomTitle showBackWard={true}>6 Bino</CustomTitle>
+      <CustomTitle showBackWard={true}>6 {t("building.building")}</CustomTitle>
       <Wrapper.MapWrapper>
         {firstFloorLoading || secondFloorLoading || thirdFloorLoading ? (
           <Spin />

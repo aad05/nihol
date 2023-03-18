@@ -3,8 +3,10 @@ import { CenteredWrapper } from "../../Generic/Styles";
 import { Spin } from "antd";
 import UserTable from "../../Generic/Table";
 import useQueryHandler from "../../hooks/useQuery";
+import { useTranslation } from "react-i18next";
 
 const TimeUp = () => {
+  const { t } = useTranslation();
   const useQuery = useQueryHandler();
 
   const { isLoading, data } = useQuery({
@@ -14,7 +16,9 @@ const TimeUp = () => {
 
   return (
     <CenteredWrapper>
-      <CustomTitle showBackWard={true}>Muddat tugash</CustomTitle>
+      <CustomTitle showBackWard={true}>
+        {t("home.home_up_users_section")}
+      </CustomTitle>
       {isLoading ? <Spin /> : <UserTable data={data} />}
     </CenteredWrapper>
   );

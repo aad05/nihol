@@ -8,10 +8,12 @@ import { useUpdateUser } from "../../../../../../hooks/useQuery/useBuildingActio
 import useNotification from "../../../../../../hooks/useNotification";
 import { switchUserModalVisibility } from "../../../../../../redux/modalSlice";
 import locale from "antd/es/date-picker/locale/ru_RU";
+import { useTranslation } from "react-i18next";
 
 const { RangePicker } = DatePicker;
 
 const RegularUserEditing = () => {
+  const { t } = useTranslation();
   const notification = useNotification();
   const { mutate } = useUpdateUser();
   const dispatch = useDispatch();
@@ -63,24 +65,24 @@ const RegularUserEditing = () => {
         onFinish={(e) => changeUserHandler(e)}
       >
         <Form.Item
-          label="To'liq ism"
+          label={t("formLabels.fullname")}
           name="fullName"
           rules={[
             {
               required: true,
-              message: "Iltimos, to'liq ismni kiriting!",
+              message: t("formErrors.fullname_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Tug'ulgan sana"
+          label={t("formLabels.birthDate")}
           name="birthDate"
           rules={[
             {
               required: true,
-              message: "Iltimos, tug'ulgan sanani kiriting!",
+              message: t("formErrors.birth_date_error"),
             },
           ]}
         >
@@ -91,48 +93,48 @@ const RegularUserEditing = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Passport raqam"
+          label={t("formLabels.passport_number")}
           name="passportID"
           rules={[
             {
               required: true,
-              message: "Iltimos, passport raqamini kiriting!",
+              message: t("formErrors.passport_number_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Tel raqam"
+          label={t("formLabels.phoneNumber")}
           name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Iltimos, tel raqamni kirting!",
+              message: t("formErrors.phone_error"),
             },
           ]}
         >
           <Input addonBefore="+998" type="number" />
         </Form.Item>
         <Form.Item
-          label="Adres"
+          label={t("formLabels.address")}
           name="address"
           rules={[
             {
               required: true,
-              message: "Iltimos, adresni kiriting!",
+              message: t("formErrors.address_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Sana oralig'"
+          label={t("formLabels.dateRange")}
           name="arrivalDate"
           rules={[
             {
               required: true,
-              message: "Iltimos, kelish sanasini kiriting!",
+              message: t("formErrors.datapicker_error"),
             },
           ]}
         >
@@ -143,36 +145,36 @@ const RegularUserEditing = () => {
           />
         </Form.Item>
         <Form.Item
-          label="Kunlik narx"
+          label={t("formLabels.daily_price")}
           name="dayCost"
           rules={[
             {
               required: true,
-              message: "Iltimos, kunlik narxni kriting!",
+              message: t("formErrors.daily_price_error"),
             },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Naqd to'lov"
+          label={t("formLabels.payByCash")}
           name="paidByCash"
           rules={[
             {
               required: true,
-              message: "Iltimos, naqd to'lovni kiriting!",
+              message: t("formErrors.paid_by_cash_error"),
             },
           ]}
         >
           <Input type="number" />
         </Form.Item>
         <Form.Item
-          label="Karta orqali to'lov"
+          label={t("formLabels.payByCard")}
           name="paidByPlasticCard"
           rules={[
             {
               required: true,
-              message: "Iltimos, karta orqali to'lovni kriting!",
+              message: t("formErrors.paid_by_card_error"),
             },
           ]}
         >
@@ -185,10 +187,10 @@ const RegularUserEditing = () => {
             style={{ marginRight: "10px" }}
             onClick={() => dispatch(switchUserModalVisibility())}
           >
-            Bekor qilish
+            {t("modal.modal_canceling")}
           </Button>
           <Button type="primary" htmlType="submit">
-            O'zgaritirish
+            {t("modal.modal_edit")}
           </Button>
         </Wrapper.InputWrapper>
       </Form>

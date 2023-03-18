@@ -3,10 +3,12 @@ import { CenteredWrapper } from "../../../Generic/Styles";
 import { Wrapper } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { switchUserModalVisibility } from "../../../redux/navbarSlice";
+import { useTranslation } from "react-i18next";
 
 const { Text } = Typography;
 
 const ProfileModal = () => {
+  const { t } = useTranslation();
   const { profileModalVisibility, userData } = useSelector(
     (state) => state.navbar
   );
@@ -16,9 +18,9 @@ const ProfileModal = () => {
     <Modal
       open={profileModalVisibility}
       onCancel={() => dispatch(switchUserModalVisibility())}
-      title="Profil"
-      okText="Saqlash"
-      cancelText="Bekor qilish"
+      title={t("navbarProfileModal.title")}
+      okText={t("modal.modal_save")}
+      cancelText={t("modal.modal_canceling")}
       okButtonProps={{
         disabled: true,
       }}
@@ -27,11 +29,11 @@ const ProfileModal = () => {
         <Wrapper.Avatar>S</Wrapper.Avatar>
         <Wrapper.Form>
           <Wrapper.InputWrapper>
-            <Wrapper.Label>Ism:</Wrapper.Label>
+            <Wrapper.Label>{t("navbarProfileModal.name")}:</Wrapper.Label>
             <Input disabled={true} value={userData?.name} />
           </Wrapper.InputWrapper>
           <Wrapper.InputWrapper>
-            <Wrapper.Label>Familiya:</Wrapper.Label>
+            <Wrapper.Label>{t("navbarProfileModal.surname")}:</Wrapper.Label>
             <Input disabled={true} value={userData?.surname} />
           </Wrapper.InputWrapper>
         </Wrapper.Form>

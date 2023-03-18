@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { allChecked, reportCheckBoxOptions } from "../../Generic/InputAPI";
+import { allChecked } from "../../Generic/InputAPI";
 
 const reportSlice = createSlice({
   name: "reportSlice",
@@ -7,15 +7,13 @@ const reportSlice = createSlice({
     selectedOptions: allChecked || [],
     indeterminate: false,
     checkAll: true,
-    options: reportCheckBoxOptions,
   },
   reducers: {
     setSelectedOptions(state, { payload }) {
       state.selectedOptions = payload;
-      state.indeterminate =
-        !!payload.length && payload.length < reportCheckBoxOptions.length;
+      state.indeterminate = !!payload.length && payload.length < 2;
 
-      state.checkAll = payload.length === reportCheckBoxOptions.length;
+      state.checkAll = payload.length === 2;
     },
     setCheckAll(state, { payload }) {
       if (payload.checked) {
