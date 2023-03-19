@@ -181,4 +181,13 @@ export const uzLotin = {
       "Server to'g'ri ishlamayapti! Internetga ulanishingizni tekshirgandan so'ng, qayta urinib ko'ring va «Yangilash» tugmasini bosing.",
     button: "Yangilash",
   },
+  moveModal: {
+    title: "Ko'chirish",
+    floorSelection: "Qavat raqamini tanlang",
+    roomSelection: "Xona raqamini tanlang",
+    positionSelection: "Joylashuvni tanlang",
+  },
+  loaders: {
+    loading: "Yuklanmoqda",
+  },
 };

@@ -7,8 +7,10 @@ import ThirdMoveBuilding from "./Buildings/ThirdMoveBuilding";
 import FourthMoveBuilding from "./Buildings/FourthMoveBuilding";
 import FifthMoveBuilding from "./Buildings/FifthMoveBuilding";
 import SixthMoveBuilding from "./Buildings/SixthMoveBuilding";
+import { useTranslation } from "react-i18next";
 
 const Moving = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { movingModalVisibility } = useSelector((state) => state.modal);
   const { movingUserData } = useSelector((state) => state.user);
@@ -18,9 +20,9 @@ const Moving = () => {
 
   return (
     <Modal
-      title="Ko'chirish"
+      title={t("moveModal.title")}
       open={movingModalVisibility.open}
-      cancelText="Bekor qilish"
+      cancelText={t("modal.modal_canceling")}
       onCancel={() => {
         if (!movingModalVisibility.loading)
           return dispatch(switchMovingModalVisibility());
@@ -32,7 +34,7 @@ const Moving = () => {
           onClick={() => dispatch(switchMovingModalVisibility())}
           loading={movingModalVisibility.loading}
         >
-          Bekor qilish
+          {t("modal.modal_canceling")}
         </Button>
       }
     >

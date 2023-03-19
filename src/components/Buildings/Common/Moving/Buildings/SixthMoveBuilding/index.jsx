@@ -11,8 +11,10 @@ import EmptyRoom from "../Common/EmptyRoom";
 import BookedRoom from "../Common/BookedRoom";
 import RoomComponent from "../Common/Room";
 import { MovingBuildingLoader } from "../../../../../../Generic/Loaders";
+import { useTranslation } from "react-i18next";
 
 const SixthMoveBuilding = () => {
+  const { t } = useTranslation();
   const [selectedRoomOrder, setSelectedRoomOrder] = useState(0);
   const [selectedFloorOrder, setSelectedFloorOrder] = useState("1");
   const useQuery = useQueryHandler();
@@ -37,35 +39,41 @@ const SixthMoveBuilding = () => {
         <MovingBuildingLoader />
       ) : (
         <>
-          <Wrapper.FloorTitle>Qavat raqamini tanlang:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>
+            {t("moveModal.floorSelection")}:
+          </Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedFloorOrder(e)}
             options={[
-              { label: "1 этаж", value: "1" },
-              { label: "2 этаж", value: "2" },
-              { label: "3 этаж", value: "3" },
+              { label: `1 ${t("building.floor")}`, value: "1" },
+              { label: `2 ${t("building.floor")}`, value: "2" },
+              { label: `3 ${t("building.floor")}`, value: "3" },
             ]}
           />
-          <Wrapper.FloorTitle>Xonaraqamini tanlang:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>
+            {t("moveModal.roomSelection")}:
+          </Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedRoomOrder(e)}
             options={floors[Number(selectedFloorOrder) - 1].map(
               ({ roomOrder, roomNumber }) => ({
-                label: `${roomNumber} xona`,
+                label: `${roomNumber} ${t("building.room")}`,
                 value: `${roomOrder}`,
               })
             )}
           />
-          <Wrapper.RoomTitle>Joyalashuvni tanlang:</Wrapper.RoomTitle>
+          <Wrapper.RoomTitle>
+            {t("moveModal.positionSelection")}:
+          </Wrapper.RoomTitle>
           <MappingRoomWrapper>
             <RoomTitle>
               {
                 floors[Number(selectedFloorOrder) - 1][selectedRoomOrder || 0]
                   ?.roomNumber
               }{" "}
-              xona
+              {t("building.room")}
             </RoomTitle>
             <MappingRoomContainer>
               {floors[Number(selectedFloorOrder) - 1][

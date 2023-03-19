@@ -11,8 +11,10 @@ import EmptyRoom from "../Common/EmptyRoom";
 import BookedRoom from "../Common/BookedRoom";
 import RoomComponent from "../Common/Room";
 import { MovingBuildingLoader } from "../../../../../../Generic/Loaders";
+import { useTranslation } from "react-i18next";
 
 const FifthMoveBuilding = () => {
+  const { t } = useTranslation();
   const [selectedRoomOrder, setSelectedRoomOrder] = useState(0);
   const [selectedFloorOrder, setSelectedFloorOrder] = useState("1");
   const useQuery = useQueryHandler();
@@ -33,34 +35,41 @@ const FifthMoveBuilding = () => {
         <MovingBuildingLoader />
       ) : (
         <>
-          <Wrapper.FloorTitle>Qavat sonini tanlang:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>
+            {t("moveModal.floorSelection")}:
+          </Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedFloorOrder(e)}
             options={[
-              { label: "1 qavat", value: "1" },
-              { label: "2 qavat", value: "2" },
+              { label: `1 ${t("building.floor")}`, value: "1" },
+              { label: `2 ${t("building.floor")}`, value: "2" },
             ]}
           />
-          <Wrapper.FloorTitle>Xona sonini tanlang:</Wrapper.FloorTitle>
+          <Wrapper.FloorTitle>
+            {t("moveModal.roomSelection")}:
+          </Wrapper.FloorTitle>
           <Select
             defaultValue="1"
             onChange={(e) => setSelectedRoomOrder(e)}
             options={floors[Number(selectedFloorOrder) - 1].map(
               ({ roomOrder, roomNumber }) => ({
-                label: `${roomNumber} xona`,
+                label: `${roomNumber} ${t("building.room")}`,
                 value: `${roomOrder}`,
               })
             )}
           />
-          <Wrapper.RoomTitle>Joylashuvni tanlang:</Wrapper.RoomTitle>
+          <Wrapper.RoomTitle>
+            {" "}
+            {t("moveModal.positionSelection")}:
+          </Wrapper.RoomTitle>
           <MappingRoomWrapper>
             <RoomTitle>
               {
                 floors[Number(selectedFloorOrder) - 1][selectedRoomOrder || 0]
                   ?.roomNumber
               }{" "}
-              xona
+              {t("building.room")}
             </RoomTitle>
             <MappingRoomContainer>
               {floors[Number(selectedFloorOrder) - 1][

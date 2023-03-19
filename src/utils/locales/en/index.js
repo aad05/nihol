@@ -180,4 +180,13 @@ export const en = {
       "The server is not working properly! After checking your internet connection, please try again and click «Refresh».",
     button: "Refresh",
   },
+  moveModal: {
+    title: "Move",
+    floorSelection: "Select floor",
+    roomSelection: "Select room",
+    positionSelection: "Select position",
+  },
+  loaders: {
+    loading: "Loading",
+  },
 };
