@@ -33,6 +33,7 @@ const Root = () => {
     fallbackLng: lang,
     interpolation: { escapeValue: false },
   });
+
   return (
     <Routes>
       <Route
